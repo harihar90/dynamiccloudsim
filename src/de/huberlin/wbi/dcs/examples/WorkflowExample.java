@@ -83,6 +83,8 @@ public class WorkflowExample {
 
 	}
 
+	private VmAllocationPolicyRandom vmPolicy;
+
 	public AbstractWorkflowScheduler createScheduler(int i) {
 		try {
 			switch (Parameters.scheduler) {
@@ -418,10 +420,11 @@ public class WorkflowExample {
 				costPerStorage, costPerBw);
 
 		Datacenter datacenter = null;
+		vmPolicy=new VmAllocationPolicyRandom(hostList, Parameters.seed++);
+		
 		try {
-			datacenter = new Datacenter(name, characteristics,
-					new VmAllocationPolicyRandom(hostList, Parameters.seed++),
-					storageList, 0);
+			datacenter = new Datacenter(name, characteristics,vmPolicy
+					,storageList, 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

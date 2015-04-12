@@ -154,6 +154,7 @@ public class VmAllocationPolicyRandom extends VmAllocationPolicy {
 	 * 
 	 * @return the vm table
 	 */
+	@Override
 	public Map<String, Host> getVmTable() {
 		return vmTable;
 	}

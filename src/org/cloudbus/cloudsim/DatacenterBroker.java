@@ -155,7 +155,12 @@ public class DatacenterBroker extends SimEntity {
 				break;
 			// VM Creation answer
 			case CloudSimTags.VM_CREATE_ACK:
+			try {
 				processVmCreate(ev);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				break;
 			// A finished cloudlet returned
 			case CloudSimTags.CLOUDLET_RETURN:
@@ -212,10 +217,11 @@ public class DatacenterBroker extends SimEntity {
 	 * Process the ack received due to a request for VM creation.
 	 * 
 	 * @param ev a SimEvent object
+	 * @throws Exception 
 	 * @pre ev != null
 	 * @post $none
 	 */
-	protected void processVmCreate(SimEvent ev) {
+	protected void processVmCreate(SimEvent ev) throws Exception {
 		int[] data = (int[]) ev.getData();
 		int datacenterId = data[0];
 		int vmId = data[1];

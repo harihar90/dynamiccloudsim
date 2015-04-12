@@ -619,4 +619,8 @@ public class Host {
 		this.datacenter = datacenter;
 	}
 
+	@Override
+	public boolean equals(Object o2){
+		return (this.getId() == ((Host)o2).getId());
+	}
 }
