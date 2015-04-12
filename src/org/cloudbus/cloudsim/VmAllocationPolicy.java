@@ -116,4 +116,8 @@ public abstract class VmAllocationPolicy {
 		return (List<T>) hostList;
 	}
 
+	public Map<String, Host> getVmTable() {
+		return null;
+		
+	}
 }

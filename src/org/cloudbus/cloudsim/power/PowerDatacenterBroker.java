@@ -56,7 +56,12 @@ public class PowerDatacenterBroker extends DatacenterBroker {
 					+ " failed in Datacenter #" + datacenterId);
 			System.exit(0);
 		}
-		super.processVmCreate(ev);
+		try {
+			super.processVmCreate(ev);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -155,6 +155,7 @@ public class VmAllocationPolicySimple extends VmAllocationPolicy {
 	 * 
 	 * @return the vm table
 	 */
+	@Override
 	public Map<String, Host> getVmTable() {
 		return vmTable;
 	}
