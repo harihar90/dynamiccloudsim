@@ -167,8 +167,8 @@ public class WorkflowExample {
 		int hostId = 0;
 		long storage = 1024 * 1024;
 
-		int ram = (int) (2 * 1024 * Parameters.nCusPerCoreOpteron270 * Parameters.nCoresOpteron270);
-		for (int i = 0; i < Parameters.nOpteron270; i++) {
+		int ram = (int) (2 * 1024 * Parameters.nCusPerCoreAMD2218HE * Parameters.nCoresAMD2218HE);
+		for (int i = 0; i < Parameters.nAMD2218HE; i++) {
 			double mean = 1d;
 			double dev = Parameters.bwHeterogeneityCV;
 			ContinuousDistribution dist = Parameters.getDistribution(
@@ -215,7 +215,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreOpteron270);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
 			}
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -223,11 +223,11 @@ public class WorkflowExample {
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
-					Parameters.nCusPerCoreOpteron270, Parameters.nCoresOpteron270, mips));
+					Parameters.nCusPerCoreAMD2218HE, Parameters.nCoresAMD2218HE, mips));
 		}
 
-		ram = (int) (2 * 1024 * Parameters.nCusPerCoreOpteron2218 * Parameters.nCoresOpteron2218);
-		for (int i = 0; i < Parameters.nOpteron2218; i++) {
+		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeon5507 * Parameters.nCoresXeon5507);
+		for (int i = 0; i < Parameters.nXeon5507; i++) {
 			double mean = 1d;
 			double dev = Parameters.bwHeterogeneityCV;
 			ContinuousDistribution dist = Parameters.getDistribution(
@@ -274,7 +274,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreOpteron2218);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreXeon5507);
 			}
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -282,7 +282,7 @@ public class WorkflowExample {
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
-					Parameters.nCusPerCoreOpteron2218, Parameters.nCoresOpteron2218, mips));
+					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
 
 		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeonE5430 * Parameters.nCoresXeonE5430);
@@ -342,6 +342,65 @@ public class WorkflowExample {
 			}
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeonE5430, Parameters.nCoresXeonE5430, mips));
+		}
+		
+		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeonE5645 * Parameters.nCoresXeonE5645);
+		for (int i = 0; i < Parameters.nXeonE5645; i++) {
+			double mean = 1d;
+			double dev = Parameters.bwHeterogeneityCV;
+			ContinuousDistribution dist = Parameters.getDistribution(
+					Parameters.bwHeterogeneityDistribution, mean,
+					Parameters.bwHeterogeneityAlpha,
+					Parameters.bwHeterogeneityBeta, dev,
+					Parameters.bwHeterogeneityShape,
+					Parameters.bwHeterogeneityLocation,
+					Parameters.bwHeterogeneityShift,
+					Parameters.bwHeterogeneityMin,
+					Parameters.bwHeterogeneityMax,
+					Parameters.bwHeterogeneityPopulation);
+			long bwps = 0;
+			while (bwps <= 0) {
+				bwps = (long) (dist.sample() * Parameters.bwpsPerPe);
+			}
+			mean = 1d;
+			dev = Parameters.ioHeterogeneityCV;
+			dist = Parameters.getDistribution(
+					Parameters.ioHeterogeneityDistribution, mean,
+					Parameters.ioHeterogeneityAlpha,
+					Parameters.ioHeterogeneityBeta, dev,
+					Parameters.ioHeterogeneityShape,
+					Parameters.ioHeterogeneityLocation,
+					Parameters.ioHeterogeneityShift,
+					Parameters.ioHeterogeneityMin,
+					Parameters.ioHeterogeneityMax,
+					Parameters.ioHeterogeneityPopulation);
+			long iops = 0;
+			while (iops <= 0) {
+				iops = (long) (long) (dist.sample() * Parameters.iopsPerPe);
+			}
+			mean = 1d;
+			dev = Parameters.cpuHeterogeneityCV;
+			dist = Parameters.getDistribution(
+					Parameters.cpuHeterogeneityDistribution, mean,
+					Parameters.cpuHeterogeneityAlpha,
+					Parameters.cpuHeterogeneityBeta, dev,
+					Parameters.cpuHeterogeneityShape,
+					Parameters.cpuHeterogeneityLocation,
+					Parameters.cpuHeterogeneityShift,
+					Parameters.cpuHeterogeneityMin,
+					Parameters.cpuHeterogeneityMax,
+					Parameters.cpuHeterogeneityPopulation);
+			long mips = 0;
+			while (mips <= 0) {
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreXeonE5645);
+			}
+			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
+				bwps *= Parameters.stragglerPerformanceCoefficient;
+				iops *= Parameters.stragglerPerformanceCoefficient;
+				mips *= Parameters.stragglerPerformanceCoefficient;
+			}
+			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
+					Parameters.nCusPerCoreXeonE5645, Parameters.nCoresXeonE5645, mips));
 		}
 
 		String arch = "x86";

@@ -24,20 +24,25 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nOpteron270 = 200;
-	public static int nCusPerCoreOpteron270 = 2;
-	public static int nCoresOpteron270 = 4;
-	public static int mipsPerCoreOpteron270 = 174;
+	public static int nAMD2218HE = 200;
+	public static int nCusPerCoreAMD2218HE = 1;
+	public static int nCoresAMD2218HE = 2;
+	public static int mipsPerCoreAMD2218HE = 2600;
 
-	public static int nOpteron2218 = 200;
-	public static int nCusPerCoreOpteron2218 = 2;
-	public static int nCoresOpteron2218 = 4;
-	public static int mipsPerCoreOpteron2218 = 247;
+	public static int nXeon5507 = 200;
+	public static int nCusPerCoreXeon5507 = 2;
+	public static int nCoresXeon5507 = 8;
+	public static int mipsPerCoreXeon5507 = 2260;
 
 	public static int nXeonE5430 = 100;
 	public static int nCusPerCoreXeonE5430 = 2;
 	public static int nCoresXeonE5430 = 8;
-	public static int mipsPerCoreXeonE5430 = 355;
+	public static int mipsPerCoreXeonE5430 = 2660;
+	
+	public static int nXeonE5645 = 100;
+	public static int nCusPerCoreXeonE5645 = 2;
+	public static int nCoresXeonE5645 = 12;
+	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
 	public static int nVms = 8;
@@ -51,7 +56,7 @@ public class Parameters {
 		MONTAGE_TRACE_1, MONTAGE_TRACE_12, MONTAGE_25, MONTAGE_1000, EPIGENOMICS_997, CYBERSHAKE_1000, ALIGNMENT_TRACE, CUNEIFORM_VARIANT_CALL, HETEROGENEOUS_TEST_WORKFLOW
 	}
 
-	public static Experiment experiment = Experiment.HETEROGENEOUS_TEST_WORKFLOW;
+	public static Experiment experiment = Experiment.MONTAGE_TRACE_1;
 
 	public static boolean outputDatacenterEvents = true;
 	public static boolean outputWorkflowGraph = false;
