@@ -25,23 +25,23 @@ public class Parameters {
 	public static long iopsPerPe = 20 * 1024;
 
 	public static int nAMD2218HE = 200;
-	public static int nCusPerCoreAMD2218HE = 1;
+	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
 	public static int nXeon5507 = 200;
 	public static int nCusPerCoreXeon5507 = 2;
-	public static int nCoresXeon5507 = 8;
+	public static int nCoresXeon5507 = 4;
 	public static int mipsPerCoreXeon5507 = 2260;
 
 	public static int nXeonE5430 = 100;
 	public static int nCusPerCoreXeonE5430 = 2;
-	public static int nCoresXeonE5430 = 8;
+	public static int nCoresXeonE5430 = 4;
 	public static int mipsPerCoreXeonE5430 = 2660;
 	
 	public static int nXeonE5645 = 100;
 	public static int nCusPerCoreXeonE5645 = 2;
-	public static int nCoresXeonE5645 = 12;
+	public static int nCoresXeonE5645 = 6;
 	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
