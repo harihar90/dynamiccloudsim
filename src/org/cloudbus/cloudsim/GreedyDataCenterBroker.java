@@ -25,10 +25,11 @@ public class GreedyDataCenterBroker extends DatacenterBroker {
 	private int numRunningInstances=0;
 	private List<DynamicHost> allocatedHostList= new ArrayList<DynamicHost>();
 	private Map<Integer, Integer> vmHostMap= new HashMap<Integer,Integer>();;
-	public GreedyDataCenterBroker(String name,VmAllocationPolicy policy) throws Exception {
+	public GreedyDataCenterBroker(String name,int totalLimit,int perQLimit,VmAllocationPolicy policy) throws Exception {
 		super(name);
 		vmPolicy=policy;
-		
+		totalInstanceCountLimit=totalLimit;
+		perQuantumInstanceCount=perQLimit;
 	}
 	class AllocatedVM
 	{
