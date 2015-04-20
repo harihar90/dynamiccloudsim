@@ -72,8 +72,14 @@ public class GreedyDataCenterBroker extends C2O {
 		int result = data[2];
 		List<AllocatedVM> allocList= new ArrayList<AllocatedVM>();
 		if (result == CloudSimTags.TRUE) {
+			
 			numRunningInstances++;
 			DynamicHost host=(DynamicHost) vmPolicy.getVmTable().get("3-"+vmId);
+			getVmsToDatacentersMap().put(vmId, datacenterId);
+			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
+			Log.printLine(CloudSim.clock() + ": " + getName() + ": VM #" + vmId
+					+ " has been created in Datacenter #" + datacenterId + ", Host #"
+					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId());
 			if(numRunningInstances==totalInstanceCountLimit)
 			{
 				vmHostMap.put(vmId,host.getId());
@@ -88,9 +94,10 @@ public class GreedyDataCenterBroker extends C2O {
 					      return (int) (o1.getAvailableMips() - o2.getAvailableMips());
 					   }
 					});
-				List<AllocatedVM> vmsToDestroy=allocList.subList(perQuantumInstanceCount, allocList.size());
-				for(AllocatedVM vm:vmsToDestroy)
+				
+				for(int i=0;i<allocList.size()-perQuantumInstanceCount;i++)
 				{
+					AllocatedVM vm=allocList.get(i);
 					Log.printLine(CloudSim.clock() + ": " + getName() + ": Destroying VM #" + vm.getId());
 					Vm machine=null;
 					for(Vm tvm:getVmsCreatedList())
@@ -105,7 +112,10 @@ public class GreedyDataCenterBroker extends C2O {
 					if(machine==null)
 						System.out.println("incorrect destruction");
 					else
-					sendNow(getVmsToDatacentersMap().get(vm.getId()), CloudSimTags.VM_DESTROY,machine);
+					{getVmsCreatedList().remove(machine);
+						sendNow(getVmsToDatacentersMap().get(vm.getId()), CloudSimTags.VM_DESTROY,machine);
+					}
+					
 				}
 				
 			}
@@ -114,11 +124,8 @@ public class GreedyDataCenterBroker extends C2O {
 			 
 			vmHostMap.put(vmId,host.getId());
 			}
-			getVmsToDatacentersMap().put(vmId, datacenterId);
-			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
-			Log.printLine(CloudSim.clock() + ": " + getName() + ": VM #" + vmId
-					+ " has been created in Datacenter #" + datacenterId + ", Host #"
-					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId());
+			
+			
 		} else {
 			Log.printLine(CloudSim.clock() + ": " + getName() + ": Creation of VM #" + vmId
 					+ " failed in Datacenter #" + datacenterId);

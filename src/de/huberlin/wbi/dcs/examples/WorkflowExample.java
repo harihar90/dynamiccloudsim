@@ -102,8 +102,8 @@ public class WorkflowExample {
 			case C3:
 				return new C3("C3", Parameters.taskSlotsPerVm);
 			case C2O:
-				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*5,Parameters.nVms, Parameters.taskSlotsPerVm, i);
-				//return new C2O("C2O",Parameters.taskSlotsPerVm, i);
+				//return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*4,Parameters.nVms, Parameters.taskSlotsPerVm, i);
+				return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
 				return new GreedyQueueScheduler("GreedyQueueScheduler",
 						Parameters.taskSlotsPerVm);
@@ -229,7 +229,7 @@ public class WorkflowExample {
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreAMD2218HE, Parameters.nCoresAMD2218HE, mips));
 		}
-/*
+
 		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeon5507 * Parameters.nCoresXeon5507);
 		for (int i = 0; i < Parameters.nXeon5507; i++) {
 			double mean = 1d;
@@ -288,7 +288,7 @@ public class WorkflowExample {
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
-
+/*
 		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeonE5430 * Parameters.nCoresXeonE5430);
 		for (int i = 0; i < Parameters.nXeonE5430; i++) {
 			double mean = 1d;
@@ -445,9 +445,9 @@ public class WorkflowExample {
 		String vmm = "Xen";
 
 		// create VMs
-		Vm[] vm = new DynamicVm[5*Parameters.nVms];
+		Vm[] vm = new DynamicVm[4*Parameters.nVms];
 
-		for (int i = 0; i < 5*Parameters.nVms; i++) {
+		for (int i = 0; i < 4*Parameters.nVms; i++) {
 			DynamicModel dynamicModel = new DynamicModel();
 			vm[i] = new DynamicVm(i, userId, Parameters.numberOfCusPerPe, Parameters.numberOfPes,
 					Parameters.ram, storage, vmm, new CloudletSchedulerGreedyDivided(),
