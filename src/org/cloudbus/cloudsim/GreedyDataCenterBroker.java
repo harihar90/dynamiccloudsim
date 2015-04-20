@@ -15,8 +15,11 @@ import org.cloudbus.cloudsim.core.SimEvent;
 import org.cloudbus.cloudsim.lists.VmList;
 
 import de.huberlin.wbi.dcs.DynamicHost;
+import de.huberlin.wbi.dcs.workflow.scheduler.AbstractWorkflowScheduler;
+import de.huberlin.wbi.dcs.workflow.scheduler.C2O;
+import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
 
-public class GreedyDataCenterBroker extends DatacenterBroker {
+public class GreedyDataCenterBroker extends C2O {
 
 	private VmAllocationPolicy vmPolicy;
 	private int perQuantumInstanceCount;
@@ -25,11 +28,12 @@ public class GreedyDataCenterBroker extends DatacenterBroker {
 	private int numRunningInstances=0;
 	private List<DynamicHost> allocatedHostList= new ArrayList<DynamicHost>();
 	private Map<Integer, Integer> vmHostMap= new HashMap<Integer,Integer>();;
-	public GreedyDataCenterBroker(String name,int totalLimit,int perQLimit,VmAllocationPolicy policy) throws Exception {
-		super(name);
+	public GreedyDataCenterBroker(String name,VmAllocationPolicy policy,int totalLimit,int perQLimit,int parameter1,int parameter2) throws Exception {
+		super(name,parameter1,parameter2);
 		vmPolicy=policy;
 		totalInstanceCountLimit=totalLimit;
 		perQuantumInstanceCount=perQLimit;
+		
 	}
 	class AllocatedVM
 	{
@@ -69,14 +73,15 @@ public class GreedyDataCenterBroker extends DatacenterBroker {
 		List<AllocatedVM> allocList= new ArrayList<AllocatedVM>();
 		if (result == CloudSimTags.TRUE) {
 			numRunningInstances++;
-			DynamicHost host=(DynamicHost) vmPolicy.getVmTable().get(vmId);
+			DynamicHost host=(DynamicHost) vmPolicy.getVmTable().get("3-"+vmId);
 			if(numRunningInstances==totalInstanceCountLimit)
 			{
+				vmHostMap.put(vmId,host.getId());
 				Iterator<Entry<Integer,Integer>> iter= vmHostMap.entrySet().iterator();
 				while(iter.hasNext())
 				{
 					Entry<Integer,Integer> entry=iter.next();
-					allocList.add(new AllocatedVM(entry.getKey(),((DynamicHost) vmPolicy.getVmTable().get(entry.getKey())).getAvailableMips()));
+					allocList.add(new AllocatedVM(entry.getKey(),((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getMipsPerPe()/((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getNumberOfCusPerPe()));
 				}
 				Collections.sort(allocList, new Comparator<AllocatedVM>(){
 					   public int compare(AllocatedVM o1, AllocatedVM o2){
@@ -94,9 +99,12 @@ public class GreedyDataCenterBroker extends DatacenterBroker {
 						{machine=tvm;
 							break;
 						}
-						else
-							throw new Exception("VM Missing in Master List");
+						
+						
 					}
+					if(machine==null)
+						System.out.println("incorrect destruction");
+					else
 					sendNow(getVmsToDatacentersMap().get(vm.getId()), CloudSimTags.VM_DESTROY,machine);
 				}
 				
