@@ -58,36 +58,36 @@ public class CloudSimGreedyBasic {
 			int vmid = 0;
 			int mips = 250;
 			long size = 10000; //image size (MB)
-			int ram = 512; //vm memory (MB)
+			int ram = 4096; //vm memory (MB)
 			long bw = 1000;
 			int pesNumber = 1; //number of cpus
 			String vmm = "Xen"; //VMM name
 
 			//create two VMs: the first one belongs to user1
-			Vm vm1 = new Vm(vmid, 0, mips, pesNumber, ram, bw, size, vmm, new CloudletSchedulerTimeShared());
+			Vm vm1 = new Vm(vmid, broker.getId(), mips, 1, ram, bw, size, vmm, new CloudletSchedulerTimeShared());
 			vmlist1.add(vm1);
 			WorkloadModel workLoad = new WorkloadFileReader("src" + File.separator
 									 + "test" + File.separator + "LCG.swf.gz", 1);
-			List<Cloudlet> cloudlets = createCloudlet(0, 10, 0);;
-			
+			List<Cloudlet> cloudlets = createCloudlet(broker.getId(), 10, 0);;
+
 			broker.submitVmList(vmlist1);
 			broker.submitCloudletList(cloudlets);
 			// Sixth step: Starts the simulation
-						CloudSim.startSimulation();
+			CloudSim.startSimulation();
 
-						// Final step: Print results when simulation is over
-						List<Cloudlet> newList1 = broker.getCloudletReceivedList();
-						
+			// Final step: Print results when simulation is over
+			List<Cloudlet> newList1 = broker.getCloudletReceivedList();
+		
 
-						CloudSim.stopSimulation();
+			CloudSim.stopSimulation();
 
-						Log.print("=============> User "+0+"    ");
-						printCloudletList(newList1);
+			Log.print("=============> User "+0+"    ");
+			printCloudletList(newList1);
 
-						CloudSim.stopSimulation();
+			CloudSim.stopSimulation();
 
-						//Print the debt of each user to each datacenter
-						dc.printDebts();
+			//Print the debt of each user to each datacenter
+			dc.printDebts();
 			System.out.println("Number of cloudlets " + cloudlets.size());
 		}
 		catch(FileNotFoundException e)
@@ -125,7 +125,6 @@ public class CloudSimGreedyBasic {
 	private static void printCloudletList(List<Cloudlet> list) {
 		int size = list.size();
 		Cloudlet cloudlet;
-
 		String indent = "    ";
 		Log.printLine();
 		Log.printLine("========== OUTPUT ==========");
@@ -202,7 +201,7 @@ public class CloudSimGreedyBasic {
     				new BwProvisionerSimple(bw),
     				storage,
     				peList1,
-    				new VmSchedulerTimeShared(peList1)
+    				new VmSchedulerSpaceShared(peList1)
     			)
     		); // This is our first machine
 

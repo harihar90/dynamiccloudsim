@@ -29,7 +29,7 @@ public class WorkloadExample {
 			List<Cloudlet> cloudlets = workLoad.generateWorkload();
 			for(Cloudlet cloudlet : cloudlets)
 			{
-				System.out.println(cloudlet.getCloudletLength());
+				System.out.println(cloudlet.getCloudletOutputSize());
 			}
 			System.out.println("Number of cloudlets " + cloudlets.size());
 		}

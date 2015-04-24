@@ -24,6 +24,7 @@ import de.huberlin.wbi.dcs.workflow.Task;
 import de.huberlin.wbi.dcs.workflow.Workflow;
 import de.huberlin.wbi.dcs.workflow.io.AlignmentTraceFileReader;
 import de.huberlin.wbi.dcs.workflow.io.CuneiformLogFileReader;
+import de.huberlin.wbi.dcs.workflow.io.CustomWorkloadFileReader;
 import de.huberlin.wbi.dcs.workflow.io.DaxFileReader;
 import de.huberlin.wbi.dcs.workflow.io.MontageTraceFileReader;
 import de.huberlin.wbi.dcs.workflow.scheduler.C2O;
@@ -102,8 +103,8 @@ public class WorkflowExample {
 			case C3:
 				return new C3("C3", Parameters.taskSlotsPerVm);
 			case C2O:
-				//return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*4,Parameters.nVms, Parameters.taskSlotsPerVm, i);
-				return new C2O("C2O",Parameters.taskSlotsPerVm, i);
+				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*4,Parameters.nVms, Parameters.taskSlotsPerVm, i);
+				//return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
 				return new GreedyQueueScheduler("GreedyQueueScheduler",
 						Parameters.taskSlotsPerVm);
@@ -151,6 +152,9 @@ public class WorkflowExample {
 		case HETEROGENEOUS_TEST_WORKFLOW:
 			return new CuneiformLogFileReader().parseLogFile(scheduler.getId(),
 					"examples/heterogeneous_test_workflow.log", true, true, null);
+		case CUSTOM_WORKLOAD:
+			return new CustomWorkloadFileReader().parseLogFile(scheduler.getId(), 
+					"examples/LCG.swf.gz", false, false, null);
 		}
 		return null;
 	}
