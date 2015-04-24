@@ -56,7 +56,7 @@ public class Parameters {
 		MONTAGE_TRACE_1, MONTAGE_TRACE_12, MONTAGE_25, MONTAGE_1000, EPIGENOMICS_997, CYBERSHAKE_1000, ALIGNMENT_TRACE, CUNEIFORM_VARIANT_CALL, HETEROGENEOUS_TEST_WORKFLOW, CUSTOM_WORKLOAD
 	}
 
-	public static Experiment experiment = Experiment.MONTAGE_TRACE_1;
+	public static Experiment experiment = Experiment.CUSTOM_WORKLOAD;
 
 	public static boolean outputDatacenterEvents = true;
 	public static boolean outputWorkflowGraph = false;
