@@ -42,6 +42,7 @@ public class WorkflowExample {
 		Parameters.parseParameters(args);
 
 		try { 
+			Datacenter dc = null;
 			for (int i = 0; i < Parameters.numberOfRuns; i++) {
 				WorkflowExample ex = new WorkflowExample();
 				if (!Parameters.outputDatacenterEvents) {
@@ -53,7 +54,7 @@ public class WorkflowExample {
 				boolean trace_flag = false; // mean trace events
 				CloudSim.init(num_user, calendar, trace_flag);
 
-				Datacenter dc=ex.createDatacenter("Datacenter");
+			    dc=ex.createDatacenter("Datacenter");
 				AbstractWorkflowScheduler scheduler = ex.createScheduler(i);
 				ex.createVms(i, scheduler);
 				Workflow workflow = buildWorkflow(scheduler);
@@ -66,7 +67,7 @@ public class WorkflowExample {
 				totalRuntime += scheduler.getRuntime();
 				System.out.println(scheduler.getRuntime() / 60);
 			}
-
+			dc.printDebts();
 			Log.printLine("Average runtime in minutes: " + totalRuntime
 					/ Parameters.numberOfRuns / 60);
 			Log.printLine("Total Workload: " + Task.getTotalMi() + "mi "
