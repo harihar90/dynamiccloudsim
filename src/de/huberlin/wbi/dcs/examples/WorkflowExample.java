@@ -119,7 +119,7 @@ public class WorkflowExample {
 		return null;
 	}
 
-	boolean GAME_ON=false;
+	
 	public void createVms(int run, AbstractWorkflowScheduler scheduler) {
 		// Create VMs
 		List<Vm> vmlist = createVMList(scheduler.getId(), run);
