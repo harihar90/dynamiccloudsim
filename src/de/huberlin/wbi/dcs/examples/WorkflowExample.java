@@ -103,8 +103,11 @@ public class WorkflowExample {
 			case C3:
 				return new C3("C3", Parameters.taskSlotsPerVm);
 			case C2O:
+				
+				if(GAME_ON)
 				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*4,Parameters.nVms, Parameters.taskSlotsPerVm, i);
-				//return new C2O("C2O",Parameters.taskSlotsPerVm, i);
+				else
+					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
 				return new GreedyQueueScheduler("GreedyQueueScheduler",
 						Parameters.taskSlotsPerVm);
@@ -116,6 +119,7 @@ public class WorkflowExample {
 		return null;
 	}
 
+	boolean GAME_ON=true;
 	public void createVms(int run, AbstractWorkflowScheduler scheduler) {
 		// Create VMs
 		List<Vm> vmlist = createVMList(scheduler.getId(), run);
@@ -395,7 +399,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityShape,
 					Parameters.cpuHeterogeneityLocation,
 					Parameters.cpuHeterogeneityShift,
-					Parameters.cpuHeterogeneityMin,
+					Parameters.cpuHeterogeneityMin,	
 					Parameters.cpuHeterogeneityMax,
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
@@ -449,6 +453,7 @@ public class WorkflowExample {
 		String vmm = "Xen";
 
 		// create VMs
+		if(GAME_ON){
 		Vm[] vm = new DynamicVm[4*Parameters.nVms];
 
 		for (int i = 0; i < 4*Parameters.nVms; i++) {
@@ -459,7 +464,20 @@ public class WorkflowExample {
 					Parameters.taskSlotsPerVm);
 			list.add(vm[i]);
 		}
+		}
+		else
+		{
+			Vm[] vm = new DynamicVm[Parameters.nVms];
 
+			for (int i = 0; i < Parameters.nVms; i++) {
+				DynamicModel dynamicModel = new DynamicModel();
+				vm[i] = new DynamicVm(i, userId, Parameters.numberOfCusPerPe, Parameters.numberOfPes,
+						Parameters.ram, storage, vmm, new CloudletSchedulerGreedyDivided(),
+						dynamicModel, "output/run_" + run + "_vm_" + i + ".csv",
+						Parameters.taskSlotsPerVm);
+				list.add(vm[i]);
+			}
+		}
 		return list;
 	}
 
