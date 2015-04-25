@@ -20,8 +20,7 @@ public class CustomWorkloadFileReader extends LogFileReader {
 	@Override
 	protected void fillDataStructures(int userId, String filePath, boolean fileNames, boolean kernelTime, Workflow workflow) {
 		try {
-			WorkloadModel workLoad = new WorkloadFileReader("src" + File.separator
-					 + "test" + File.separator + "LCG.swf.gz", 1);
+			WorkloadModel workLoad = new WorkloadFileReader("examples/LCG.swf.gz", 1);
 			List<Cloudlet> cloudlets = workLoad.generateWorkload();
 			for(Cloudlet c : cloudlets) {
 				

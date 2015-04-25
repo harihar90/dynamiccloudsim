@@ -1,5 +1,4 @@
 /*
- * Title:        CloudSim Toolkit
  * Description:  CloudSim (Cloud Simulation) Toolkit for Modeling and Simulation
  *               of Clouds
  * Licence:      GPL - http://www.gnu.org/copyleft/gpl.html
