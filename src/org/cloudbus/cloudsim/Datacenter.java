@@ -446,7 +446,7 @@ public class Datacenter extends SimEntity {
 		Vm vm = (Vm) ev.getData();
 
 		boolean result = getVmAllocationPolicy().allocateHostForVm(vm);
-		vm.setStartTime(Math.round(CloudSim.clock()));
+		vm.setStartTime(Math.floor(CloudSim.clock()));
 		if (ack) {
 			int[] data = new int[3];
 			data[0] = getId();
@@ -518,7 +518,7 @@ public class Datacenter extends SimEntity {
 			debit = 0.0;
 		}
 
-		debit += getCharacteristics().getCostPerSecond()*(Math.round(CloudSim.clock())-vm.getStartTime());
+		debit += getCharacteristics().getCostPerSecond()*(Math.ceil(CloudSim.clock())-vm.getStartTime());
 
 		getDebts().put(vm.getUserId(), debit);
 	}
