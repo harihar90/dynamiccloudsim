@@ -494,8 +494,10 @@ public class Datacenter extends SimEntity {
 	 */
 	protected void processVmDestroy(SimEvent ev, boolean ack) {
 		Vm vm = (Vm) ev.getData();
+		
 		getVmAllocationPolicy().deallocateHostForVm(vm);
-
+		
+		addVmExecutionCost(vm);
 		if (ack) {
 			int[] data = new int[3];
 			data[0] = getId();
@@ -506,6 +508,19 @@ public class Datacenter extends SimEntity {
 		}
 
 		getVmList().remove(vm);
+	}
+
+	private void addVmExecutionCost(Vm vm) {
+		double debit;
+		if (getDebts().containsKey(vm.getUserId())) {
+			debit = getDebts().get(vm.getUserId());
+		} else {
+			debit = 0.0;
+		}
+
+		debit += getCharacteristics().getCostPerSecond()*(CloudSim.clock()-vm.getStartTime());
+
+		getDebts().put(vm.getUserId(), debit);
 	}
 
 	/**

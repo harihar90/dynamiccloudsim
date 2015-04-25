@@ -46,6 +46,7 @@ public class Parameters {
 
 	// vm params
 	public static int nVms = 1;
+	public static int tVms=4;// total number of vms created ( including those being destroyed)
 	public static int taskSlotsPerVm = 1;
 
 	public static double numberOfCusPerPe = 1;
@@ -203,6 +204,8 @@ public class Parameters {
 
 	public static long seed = 0;
 	public static Random numGen = new Random(seed);
+
+	
 
 	public static ContinuousDistribution getDistribution(
 			Distribution distribution, double mean, int alpha, double beta,

@@ -75,7 +75,9 @@ public class Vm {
 
 	/** The mips allocation history. */
 	private final List<VmStateHistoryEntry> stateHistory = new LinkedList<VmStateHistoryEntry>();
-
+	
+	//VM start time
+	private double startTime;
 	/**
 	 * Creates a new VMCharacteristics object.
 	 * 
@@ -604,6 +606,14 @@ public class Vm {
 			}
 		}
 		getStateHistory().add(newState);
+	}
+
+	public double getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(double startTime) {
+		this.startTime = startTime;
 	}
 
 }

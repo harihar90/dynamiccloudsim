@@ -27,13 +27,13 @@ import de.huberlin.wbi.dcs.workflow.io.CuneiformLogFileReader;
 import de.huberlin.wbi.dcs.workflow.io.CustomWorkloadFileReader;
 import de.huberlin.wbi.dcs.workflow.io.DaxFileReader;
 import de.huberlin.wbi.dcs.workflow.io.MontageTraceFileReader;
+import de.huberlin.wbi.dcs.workflow.scheduler.AbstractWorkflowScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.C2O;
 import de.huberlin.wbi.dcs.workflow.scheduler.C3;
 import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.HEFTScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.LATEScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.StaticRoundRobinScheduler;
-import de.huberlin.wbi.dcs.workflow.scheduler.AbstractWorkflowScheduler;
 
 public class WorkflowExample {
 
@@ -53,7 +53,7 @@ public class WorkflowExample {
 				boolean trace_flag = false; // mean trace events
 				CloudSim.init(num_user, calendar, trace_flag);
 
-				ex.createDatacenter("Datacenter");
+				Datacenter dc=ex.createDatacenter("Datacenter");
 				AbstractWorkflowScheduler scheduler = ex.createScheduler(i);
 				ex.createVms(i, scheduler);
 				Workflow workflow = buildWorkflow(scheduler);
@@ -62,7 +62,7 @@ public class WorkflowExample {
 				// Start the simulation
 				CloudSim.startSimulation();
 				CloudSim.stopSimulation();
-
+				
 				totalRuntime += scheduler.getRuntime();
 				System.out.println(scheduler.getRuntime() / 60);
 			}
@@ -86,6 +86,7 @@ public class WorkflowExample {
 	}
 
 	private VmAllocationPolicyRandom vmPolicy;
+	private boolean GAME_ON=true;
 
 	public AbstractWorkflowScheduler createScheduler(int i) {
 		try {
@@ -105,7 +106,7 @@ public class WorkflowExample {
 			case C2O:
 				
 				if(GAME_ON)
-				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.nVms*4,Parameters.nVms, Parameters.taskSlotsPerVm, i);
+				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				else
 					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
@@ -451,12 +452,15 @@ public class WorkflowExample {
 		// VM Parameters
 		long storage = 10000;
 		String vmm = "Xen";
-
+		int vmCount=0;
 		// create VMs
-		if(GAME_ON){
-		Vm[] vm = new DynamicVm[4*Parameters.nVms];
+		if(GAME_ON)
+			vmCount=Parameters.tVms;
+		else
+			vmCount=Parameters.nVms;
+		Vm[] vm = new DynamicVm[vmCount];
 
-		for (int i = 0; i < 4*Parameters.nVms; i++) {
+		for (int i = 0; i < vmCount; i++) {
 			DynamicModel dynamicModel = new DynamicModel();
 			vm[i] = new DynamicVm(i, userId, Parameters.numberOfCusPerPe, Parameters.numberOfPes,
 					Parameters.ram, storage, vmm, new CloudletSchedulerGreedyDivided(),
@@ -464,20 +468,8 @@ public class WorkflowExample {
 					Parameters.taskSlotsPerVm);
 			list.add(vm[i]);
 		}
-		}
-		else
-		{
-			Vm[] vm = new DynamicVm[Parameters.nVms];
-
-			for (int i = 0; i < Parameters.nVms; i++) {
-				DynamicModel dynamicModel = new DynamicModel();
-				vm[i] = new DynamicVm(i, userId, Parameters.numberOfCusPerPe, Parameters.numberOfPes,
-						Parameters.ram, storage, vmm, new CloudletSchedulerGreedyDivided(),
-						dynamicModel, "output/run_" + run + "_vm_" + i + ".csv",
-						Parameters.taskSlotsPerVm);
-				list.add(vm[i]);
-			}
-		}
+		
+		
 		return list;
 	}
 

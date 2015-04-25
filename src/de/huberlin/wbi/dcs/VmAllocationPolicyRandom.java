@@ -100,7 +100,7 @@ public class VmAllocationPolicyRandom extends VmAllocationPolicy {
 			} while (!result && tries < getFreePes().size());
 
 		}
-
+		vm.setStartTime(CloudSim.clock());
 		return result;
 	}
 
@@ -234,7 +234,7 @@ public class VmAllocationPolicyRandom extends VmAllocationPolicy {
 					CloudSim.clock());
 			return true;
 		}
-
+		vm.setStartTime(CloudSim.clock());
 		return false;
 	}
 }
