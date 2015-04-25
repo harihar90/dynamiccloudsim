@@ -161,6 +161,18 @@ public class GreedyDataCenterBroker extends C2O {
 	
 	
 
+	public Map<Integer, Integer> getVmHostMap() {
+		return vmHostMap;
+	}
+
+
+
+	public void setVmHostMap(Map<Integer, Integer> vmHostMap) {
+		this.vmHostMap = vmHostMap;
+	}
+
+
+
 	public VmAllocationPolicy getVmPolicy() {
 		return vmPolicy;
 	}

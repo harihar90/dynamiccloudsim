@@ -41,7 +41,7 @@ public class WorkflowExample {
 		double totalRuntime = 0d;
 		Parameters.parseParameters(args);
 
-		try {
+		try { 
 			for (int i = 0; i < Parameters.numberOfRuns; i++) {
 				WorkflowExample ex = new WorkflowExample();
 				if (!Parameters.outputDatacenterEvents) {
@@ -292,7 +292,7 @@ public class WorkflowExample {
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
-/*
+
 		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeonE5430 * Parameters.nCoresXeonE5430);
 		for (int i = 0; i < Parameters.nXeonE5430; i++) {
 			double mean = 1d;
@@ -410,7 +410,7 @@ public class WorkflowExample {
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeonE5645, Parameters.nCoresXeonE5645, mips));
 		}
-*/
+
 		String arch = "x86";
 		String os = "Linux";
 		String vmm = "Xen";

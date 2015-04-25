@@ -25,6 +25,7 @@ import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.VmAllocationPolicySimple;
 import org.cloudbus.cloudsim.VmSchedulerSpaceShared;
 import org.cloudbus.cloudsim.VmSchedulerTimeShared;
+import org.cloudbus.cloudsim.VmSchedulerTimeSharedOverSubscription;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.distributions.ContinuousDistribution;
 import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
@@ -64,14 +65,17 @@ public class CloudSimGreedyBasic {
 			String vmm = "Xen"; //VMM name
 
 			//create two VMs: the first one belongs to user1
-			Vm vm1 = new Vm(vmid, broker.getId(), mips, 1, ram, bw, size, vmm, new CloudletSchedulerTimeShared());
+
+			Vm vm1 = new Vm(vmid, broker.getId(), mips, pesNumber, ram, bw, size, vmm, new CloudletSchedulerTimeShared());
 			vmlist1.add(vm1);
 			WorkloadModel workLoad = new WorkloadFileReader("src" + File.separator
 									 + "test" + File.separator + "LCG.swf.gz", 1);
-			List<Cloudlet> cloudlets = createCloudlet(broker.getId(), 10, 0);;
+			List<Cloudlet> cloudlets = createCloudlet(broker.getId(), 1, 0);;
+			
 
 			broker.submitVmList(vmlist1);
 			broker.submitCloudletList(cloudlets);
+			
 			// Sixth step: Starts the simulation
 			CloudSim.startSimulation();
 
@@ -113,6 +117,7 @@ public class CloudSimGreedyBasic {
 			// setting the owner of these Cloudlets
 			cloudlet[i].setUserId(userId);
 			list.add(cloudlet[i]);
+			
 		}
 
 		return list;
@@ -173,21 +178,18 @@ public class CloudSimGreedyBasic {
 		//    a Machine.
 		List<Pe> peList1 = new ArrayList<Pe>();
 
-		int mips = 1000;
+		int mips = 100;
 
 		// 3. Create PEs and add these into the list.
 		//for a quad-core machine, a list of 4 PEs is required:
 		peList1.add(new Pe(0, new PeProvisionerSimple(mips))); // need to store Pe id and MIPS Rating
 		peList1.add(new Pe(1, new PeProvisionerSimple(mips)));
-		peList1.add(new Pe(2, new PeProvisionerSimple(mips)));
-		peList1.add(new Pe(3, new PeProvisionerSimple(mips)));
-
+		
 		//Another list, for a dual-core machine
 		List<Pe> peList2 = new ArrayList<Pe>();
 		mips=mips*2;
 		peList2.add(new Pe(0, new PeProvisionerSimple(mips)));
-		peList2.add(new Pe(1, new PeProvisionerSimple(mips)));
-
+		
 		//4. Create Hosts with its id and list of PEs and add them to the list of machines
 		int hostId=0;
 		int ram = 16384; //host memory (MB)
@@ -201,7 +203,9 @@ public class CloudSimGreedyBasic {
     				new BwProvisionerSimple(bw),
     				storage,
     				peList1,
+
     				new VmSchedulerSpaceShared(peList1)
+
     			)
     		); // This is our first machine
 
@@ -214,7 +218,7 @@ public class CloudSimGreedyBasic {
     				new BwProvisionerSimple(bw),
     				storage,
     				peList2,
-    				new VmSchedulerTimeShared(peList2)
+    				new VmSchedulerTimeSharedOverSubscription(peList2)
     			)
     		); // Second machine
 

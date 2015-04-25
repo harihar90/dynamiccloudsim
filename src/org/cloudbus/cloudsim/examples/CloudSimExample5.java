@@ -158,7 +158,7 @@ public class CloudSimExample5 {
 		}
 	}
 
-	private static Datacenter createDatacenter(String name){
+	/*private static Datacenter createDatacenter(String name){
 
 		// Here are the steps needed to create a PowerDatacenter:
 		// 1. We need to create a list to store
@@ -223,7 +223,7 @@ public class CloudSimExample5 {
 		return datacenter;
 	}
 
-	//We strongly encourage users to develop their own broker policies, to submit vms and cloudlets according
+	*///We strongly encourage users to develop their own broker policies, to submit vms and cloudlets according
 	//to the specific rules of the simulated scenario
 	private static DatacenterBroker createBroker(int id){
 
