@@ -421,8 +421,8 @@ public class WorkflowExample {
 		String os = "Linux";
 		String vmm = "Xen";
 		double time_zone = 10.0;
-		double cost = 0.002;
-		double costPerMem = 0.002;
+		double cost = 0.0025;
+		double costPerMem = 0.0025;
 		double costPerStorage = 0.001;
 		double costPerBw = 0.0;
 		LinkedList<Storage> storageList = new LinkedList<Storage>();
