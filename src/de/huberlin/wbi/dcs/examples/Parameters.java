@@ -50,7 +50,7 @@ public class Parameters {
 	public static int taskSlotsPerVm = 1;
 
 	public static double numberOfCusPerPe = 1;
-	public static int numberOfPes = 1;
+	public static int numberOfPes = 2;
 	public static int ram = (int) (1.7 * 1024);
 
 	public enum Experiment {

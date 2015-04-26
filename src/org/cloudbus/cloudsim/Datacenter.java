@@ -20,6 +20,8 @@ import org.cloudbus.cloudsim.core.CloudSimTags;
 import org.cloudbus.cloudsim.core.SimEntity;
 import org.cloudbus.cloudsim.core.SimEvent;
 
+import de.huberlin.wbi.dcs.DynamicVm;
+
 /**
  * Datacenter class is a CloudResource whose hostList are virtualized. It deals with processing of
  * VM queries (i.e., handling of VMs) instead of processing Cloudlet-related queries. So, even
@@ -518,7 +520,7 @@ public class Datacenter extends SimEntity {
 			debit = 0.0;
 		}
 
-		debit += getCharacteristics().getCostPerSecond()*(Math.ceil(CloudSim.clock())-vm.getStartTime());
+		debit += getCharacteristics().getCostPerSecond()*(Math.ceil(CloudSim.clock())-vm.getStartTime())*vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe();
 
 		getDebts().put(vm.getUserId(), debit);
 	}
