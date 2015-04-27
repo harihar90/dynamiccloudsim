@@ -47,11 +47,14 @@ public class Parameters {
 
 	// vm params
 	public static int nVms = 1;
+
 	public static int tVms=2;// total number of vms created ( including those being destroyed)
 	public static int taskSlotsPerVm = 1;
 
+
+
 	public static double numberOfCusPerPe = 1;
-	public static int numberOfPes = 1;
+	public static int numberOfPes = 2;
 	public static int ram = (int) (1.7 * 1024);
 
 	public enum Experiment {
