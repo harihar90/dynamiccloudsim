@@ -182,7 +182,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				long j=-2;
 				long vmCount= broker.getVmList().size();
 				while(++j !=0){
-					CloudSim.pauseSimulation((j+3));
+					CloudSim.pauseSimulation((j+3)*100);
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
@@ -268,6 +268,8 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 					for(Cloudlet cloudlet: vmCloudletMap.get((vmPerfList).get(i).getVmId()))
 					{
 						cloudlet.setVmId(vmDestId);
+						double timeRan=CloudSim.clock()-cloudlet.getSubmissionTime();
+						cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
 						int[] array = {cloudlet.getCloudletId(), origVm1.getUserId(), origVm1.getId(), vmDestId, broker.getVmsToDatacentersMap().get(origVm1.getId()),(int) cloudlet.getCloudletFinishedSoFar()};
 						broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.CLOUDLET_MOVE, array);
 					}
