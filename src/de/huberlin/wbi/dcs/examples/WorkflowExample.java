@@ -9,6 +9,7 @@ import java.util.Random;
 import org.cloudbus.cloudsim.Datacenter;
 import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker;
+import org.cloudbus.cloudsim.GreedyDataCenterBroker_Opportunistic;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.Storage;
 import org.cloudbus.cloudsim.Vm;
@@ -87,8 +88,6 @@ public class WorkflowExample {
 	}
 
 	private VmAllocationPolicyRandom vmPolicy;
-	private boolean GAME_ON=true;
-
 	public AbstractWorkflowScheduler createScheduler(int i) {
 		try {
 			switch (Parameters.scheduler) {
@@ -106,8 +105,11 @@ public class WorkflowExample {
 				return new C3("C3", Parameters.taskSlotsPerVm);
 			case C2O:
 				
-				if(GAME_ON)
+				if(Parameters.game==Parameters.Gaming.BASIC)
 				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
+				
+				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
+					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, 0, 0,2300 );
 				else
 					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
@@ -455,7 +457,7 @@ public class WorkflowExample {
 		String vmm = "Xen";
 		int vmCount=0;
 		// create VMs
-		if(GAME_ON)
+		if(Parameters.game==Parameters.Gaming.BASIC)
 			vmCount=Parameters.tVms;
 		else
 			vmCount=Parameters.nVms;

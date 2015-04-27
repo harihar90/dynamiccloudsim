@@ -29,7 +29,15 @@ public class C2O extends AbstractWorkflowScheduler {
 
 	protected Map<Vm, Map<String, WienerProcessModel>> runtimePerTaskPerVm;
 
+	public Map<Vm, Map<String, WienerProcessModel>> getRuntimePerTaskPerVm() {
+		return runtimePerTaskPerVm;
+	}
+
 	protected Map<Vm, WienerProcessModel> stageintimePerMBPerVm;
+
+	public Map<Vm, WienerProcessModel> getStageintimePerMBPerVm() {
+		return stageintimePerMBPerVm;
+	}
 
 	protected int runId;
 

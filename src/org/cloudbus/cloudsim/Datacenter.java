@@ -666,7 +666,7 @@ public class Datacenter extends SimEntity {
 		int vmId = array[2];
 		int vmDestId = array[3];
 		int destId = array[4];
-
+		int cloudletFinished = array[5];
 		// get the cloudlet
 		Cloudlet cl = getVmAllocationPolicy().getHost(vmId, userId).getVm(vmId,userId)
 				.getCloudletScheduler().cloudletCancel(cloudletId);
@@ -695,6 +695,7 @@ public class Datacenter extends SimEntity {
 					failed = true;
 				} else {
 					// time to transfer the files
+					cl.setCloudletFinishedSoFar(cloudletFinished);
 					double fileTransferTime = predictFileTransferTime(cl.getRequiredFiles());
 					vm.getCloudletScheduler().cloudletSubmit(cl, fileTransferTime);
 				}

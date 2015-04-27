@@ -608,7 +608,7 @@ public abstract class SimEntity implements Cloneable {
 	 * @pre data != null
 	 * @post $none
 	 */
-	protected void sendNow(int entityId, int cloudSimTag, Object data) {
+	public void sendNow(int entityId, int cloudSimTag, Object data) {
 		send(entityId, 0, cloudSimTag, data);
 	}
 

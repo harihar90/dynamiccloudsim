@@ -21,13 +21,14 @@ import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
 
 public class GreedyDataCenterBroker extends C2O {
 
-	private VmAllocationPolicy vmPolicy;
+	protected VmAllocationPolicy vmPolicy;
 	private int perQuantumInstanceCount;
 	private int totalInstanceCountLimit;
 	private int numInstancesLaunched;
 	private int numRunningInstances=0;
 	private List<DynamicHost> allocatedHostList= new ArrayList<DynamicHost>();
-	private Map<Integer, Integer> vmHostMap= new HashMap<Integer,Integer>();;
+	private Map<Integer, Integer> vmHostMap= new HashMap<Integer,Integer>();
+	private int threshold;;
 	public GreedyDataCenterBroker(String name,VmAllocationPolicy policy,int totalLimit,int perQLimit,int parameter1,int parameter2) throws Exception {
 		super(name,parameter1,parameter2);
 		vmPolicy=policy;

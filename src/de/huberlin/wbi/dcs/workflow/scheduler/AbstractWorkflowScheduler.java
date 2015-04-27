@@ -29,9 +29,26 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 
 	private List<Workflow> workflows;
 	private Map<Integer, Vm> vms;
+	public Map<Integer, Vm> getVms() {
+		return vms;
+	}
+
+	public void setVms(Map<Integer, Vm> vms) {
+		this.vms = vms;
+	}
+
+
+
 	private int taskSlotsPerVm;
 	private Queue<Vm> idleTaskSlots;
 	private double runtime;
+	private List<Task> cloudletList= new ArrayList<Task>();
+	
+	public List<Task> getCloudletList() {
+		return cloudletList;
+	}
+
+	
 
 	// two collections of tasks, which are currently running;
 	// note that the second collections is a subset of the first collection
@@ -75,6 +92,7 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 		}
 		sendNow(getVmsToDatacentersMap().get(vm.getId()),
 				CloudSimTags.CLOUDLET_SUBMIT, task);
+		this.cloudletList.add(task);
 	}
 
 	private void submitSpeculativeTask(Task task, Vm vm) {
