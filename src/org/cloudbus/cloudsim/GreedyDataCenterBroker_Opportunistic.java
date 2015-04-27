@@ -182,7 +182,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				long j=-2;
 				long vmCount= broker.getVmList().size();
 				while(++j !=0){
-					CloudSim.pauseSimulation(j+3);
+					CloudSim.pauseSimulation((j+3));
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
