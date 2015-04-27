@@ -24,7 +24,7 @@ import de.huberlin.wbi.dcs.workflow.scheduler.C2O.WienerProcessModel;
 
 public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker {
 
-	private int recheckInterval;
+	private int pauseInterval;
 	private int mipsThreshold;
 	private Double threshold;
 	private boolean cloudletsSubmittedAlready=false;
@@ -62,8 +62,9 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 			
 			setNumRunningInstances(getNumRunningInstances()+1);
 			DynamicHost host=(DynamicHost) getVmPolicy().getVmTable().get("3-"+vmId);
-			getVmsToDatacentersMap().put(vmId, datacenterId);
 			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
+			getVmsToDatacentersMap().put(vmId, datacenterId);
+			
 			Log.printLine(CloudSim.clock() + ": " + getName() + ": VM #" + vmId
 					+ " has been created in Datacenter #" + datacenterId + ", Host #"
 					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId()+" with mips:"+VmList.getById(getVmsCreatedList(), vmId).getHost().getTotalMips()/VmList.getById(getVmsCreatedList(), vmId).getHost().getNumberOfPes());
@@ -81,7 +82,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				Thread monitor=new Thread(new PerformanceMonitoringTask(this, threshold));
 				monitor.setPriority(Thread.MAX_PRIORITY);
 				monitor.start();
-				Thread.sleep(1000);
+				
 				
 				Thread.sleep(1000);
 				}
@@ -130,11 +131,11 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 	}
 
 	public int getRecheckInterval() {
-		return recheckInterval;
+		return pauseInterval;
 	}
 
 	public void setRecheckInterval(int recheckInterval) {
-		this.recheckInterval = recheckInterval;
+		this.pauseInterval = recheckInterval;
 	}
 
 	public Double getThreshold() {
@@ -179,10 +180,10 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 			}
 			@Override
 			public void run() {
-				long j=-2;
+				long j=1;
 				long vmCount= broker.getVmList().size();
-				while(++j !=0){
-					CloudSim.pauseSimulation((j+3)*100);
+				while(j++ !=10){
+					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
@@ -214,7 +215,10 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				
 				for(Integer vmId:vmCloudletMap.keySet())
 				{
-					double performance=(((DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId)).getMipsPerPe()/((DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId)).getNumberOfCusPerPe());
+					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId);
+					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null)
+						continue;
+					double performance=(dynamicHost.getMipsPerPe()/dynamicHost.getNumberOfCusPerPe());
 					VmPerformanceData perf= new VmPerformanceData();
 					perf.setVmId(vmId);
 					perf.setCloudletsLength(performance);

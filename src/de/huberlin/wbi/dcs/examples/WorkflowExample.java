@@ -9,6 +9,7 @@ import java.util.Random;
 import org.cloudbus.cloudsim.Datacenter;
 import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker;
+import org.cloudbus.cloudsim.GreedyDataCenterBroker_Migration;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker_Opportunistic;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.Storage;
@@ -108,8 +109,10 @@ public class WorkflowExample {
 				if(Parameters.game==Parameters.Gaming.BASIC)
 				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				
-				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
+				else if(Parameters.game==Parameters.Gaming.OPPORTUNISTIC)
 					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, 0, 0,10000 );
+				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
+					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, 0, 0,10000 );
 				else
 					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
@@ -457,7 +460,7 @@ public class WorkflowExample {
 		String vmm = "Xen";
 		int vmCount=0;
 		// create VMs
-		if(Parameters.game==Parameters.Gaming.BASIC)
+		if(Parameters.game==Parameters.Gaming.BASIC ||Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION )
 			vmCount=Parameters.tVms;
 		else
 			vmCount=Parameters.nVms;
