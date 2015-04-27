@@ -19,6 +19,7 @@ import de.huberlin.wbi.dcs.CloudletSchedulerGreedyDivided;
 import de.huberlin.wbi.dcs.DynamicHost;
 import de.huberlin.wbi.dcs.DynamicModel;
 import de.huberlin.wbi.dcs.DynamicVm;
+import de.huberlin.wbi.dcs.examples.Parameters;
 import de.huberlin.wbi.dcs.workflow.Task;
 import de.huberlin.wbi.dcs.workflow.scheduler.C2O.WienerProcessModel;
 
@@ -216,7 +217,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				for(Integer vmId:vmCloudletMap.keySet())
 				{
 					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId);
-					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null)
+					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null || (CloudSim.clock()-((DynamicVm)VmList.getById(broker.getVmList(),vmId)).getStartTime())%Parameters.TIME_QUANTA>(Parameters.TIME_QUANTA-Parameters.DELTA))
 						continue;
 					double performance=(dynamicHost.getMipsPerPe()/dynamicHost.getNumberOfCusPerPe());
 					VmPerformanceData perf= new VmPerformanceData();

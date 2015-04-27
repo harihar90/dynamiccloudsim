@@ -17,6 +17,9 @@ import de.huberlin.wbi.dcs.distributions.NormalDistribution;
 
 public class Parameters {
 
+	public static final double DELTA = 2;
+	public static final int TIME_QUANTA=60;
+	public static final int recheck_interval=10;
 	public static boolean considerDataLocality = false;
 	
 	// datacenter params

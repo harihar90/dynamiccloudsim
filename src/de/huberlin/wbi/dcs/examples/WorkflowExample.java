@@ -110,9 +110,9 @@ public class WorkflowExample {
 				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				
 				else if(Parameters.game==Parameters.Gaming.OPPORTUNISTIC)
-					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, 0, 0,10000 );
+					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,10000 );
 				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
-					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, 0, 0,10000 );
+					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,10000 );
 				else
 					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
