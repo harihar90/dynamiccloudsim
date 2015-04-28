@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Map.Entry;
 
+import org.cloudbus.cloudsim.GreedyDataCenterBroker.AllocatedVM;
+import org.cloudbus.cloudsim.GreedyDataCenterBroker_Opportunistic.PerformanceMonitoringTask;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.core.CloudSimTags;
 import org.cloudbus.cloudsim.core.SimEvent;
@@ -69,29 +72,51 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 			Log.printLine(CloudSim.clock() + ": " + getName() + ": VM #" + vmId
 					+ " has been created in Datacenter #" + datacenterId + ", Host #"
 					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId()+" with mips:"+VmList.getById(getVmsCreatedList(), vmId).getHost().getTotalMips()/VmList.getById(getVmsCreatedList(), vmId).getHost().getNumberOfPes());
-			if(getNumRunningInstances()==getPerQuantumInstanceCount())
+			if(numRunningInstances==totalInstanceCountLimit)
 			{
+				vmHostMap.put(vmId,host.getId());
+				Iterator<Entry<Integer,Integer>> iter= vmHostMap.entrySet().iterator();
+				while(iter.hasNext())
+				{
+					Entry<Integer,Integer> entry=iter.next();
+					allocList.add(new AllocatedVM(entry.getKey(),((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getMipsPerPe()/((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getNumberOfCusPerPe()));
+				}
+				Collections.sort(allocList, new Comparator<AllocatedVM>(){
+					   public int compare(AllocatedVM o1, AllocatedVM o2){
+					      return (int) (o1.getAvailableMips() - o2.getAvailableMips());
+					   }
+					});
+				List<Integer> retainedVmList = new ArrayList<Integer>();
+				for(int i=allocList.size()-perQuantumInstanceCount;i<allocList.size();i++)
+				{
+					retainedVmList.add(allocList.get(i).getId());
+					
+				}
+				List<Integer> destroyedVmList = new ArrayList<Integer>();
+				for(int i=0;i<allocList.size()-perQuantumInstanceCount;i++)
+				{
+					destroyedVmList.add(allocList.get(i).getId());
+					
+				}
 				
-				if(!monitorStarted){
-				monitorStarted=true;
 				getVmHostMap().put(vmId,host.getId());
-				
+				submitCloudlets();
 				Timer t = new Timer();
 
 				
 
-				Thread monitor=new Thread(new PerformanceMonitoringTask(this, threshold));
+				Thread monitor=new Thread(new PerformanceMonitoringTask(this, threshold,retainedVmList,destroyedVmList));
 				monitor.setPriority(Thread.MAX_PRIORITY);
 				monitor.start();
 				
 				
 				Thread.sleep(1000);
-				}
+				
 			}
 			else{
 				
 			 
-			getVmHostMap().put(vmId,host.getId());
+			vmHostMap.put(vmId,host.getId());
 			}
 			
 			
@@ -106,7 +131,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 		if (getVmsCreatedList().size() == getVmList().size() - getVmsDestroyed()) {
 			if(!cloudletsSubmittedAlready)
 			{cloudletsSubmittedAlready=true;
-			submitCloudlets();
+			
 			}
 		} else {
 			// all the acks received, but some VMs were not created
@@ -150,6 +175,8 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 	public class PerformanceMonitoringTask implements Runnable {
 		private GreedyDataCenterBroker_Migration broker;
 		private Double meanMips;
+		private List<Integer> allocList;
+		private List<Integer> retainedVmList;
 			public Double getMeanMips() {
 			return meanMips;
 		}
@@ -157,9 +184,11 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 			this.meanMips = meanMips;
 		}
 		HashMap<Integer,Integer> cloudletCountMap = new HashMap<Integer,Integer>();
-			public PerformanceMonitoringTask(GreedyDataCenterBroker_Migration broker,Double meanMips) {
+			public PerformanceMonitoringTask(GreedyDataCenterBroker_Migration broker,Double meanMips, List<Integer> retainedVmList, List<Integer> destroyedVmList) {
 				this.setBroker(broker);
 				this.setMeanMips(meanMips);
+				this.setRetainedVmList(retainedVmList);
+				this.setAllocList(destroyedVmList);
 			}
 			class VmPerformanceData
 			{
@@ -212,45 +241,35 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 					
 					
 				}
-				List<VmPerformanceData> vmPerfList=new ArrayList<VmPerformanceData>();
 				
-				for(Integer vmId:vmCloudletMap.keySet())
-				{
-					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId);
-					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null || CloudSim.clock()-((DynamicVm)VmList.getById(broker.getVmList(),vmId)).getStartTime()>Parameters.DELTA)
-						continue;
-					double performance=(dynamicHost.getMipsPerPe()/dynamicHost.getNumberOfCusPerPe());
-					VmPerformanceData perf= new VmPerformanceData();
-					perf.setVmId(vmId);
-					perf.setCloudletsLength(performance);
-					vmPerfList.add(perf);
-				}
 				
-				Collections.sort(vmPerfList, new Comparator<VmPerformanceData>(){
-					   public int compare(VmPerformanceData o1, VmPerformanceData o2){
-					      return (int) (o1.getCloudletsLength() - o2.getCloudletsLength());
-					   }
-					});
+				
 				int i=0;
-				List<DynamicVm> submittedVmList= new ArrayList<DynamicVm>();
-				Map<Integer,Integer> vmToVmMap = new HashMap<Integer,Integer>();
+				int destVmIndex=0;
 				
-				while(i<vmPerfList.size() && vmPerfList.get(i).getCloudletsLength()<broker.getThreshold())
+				
+				while(i<allocList.size())
 				{
 					if(vmDestroyedCount==broker.getTotalInstanceCountLimit()-broker.getPerQuantumInstanceCount())
 						break;
-					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),vmPerfList.get(i).getVmId()));
-					int vmDestId=vmToVmMap.get(origVm1.getId()); // the id of the new vm, you want to move the cloudlet to
-					
-					for(Cloudlet cloudlet: vmCloudletMap.get((vmPerfList).get(i).getVmId()))
+					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
+					if((CloudSim.clock()-(origVm1.getStartTime())%Parameters.TIME_QUANTA<(Parameters.TIME_QUANTA-Parameters.DELTA)))
+						continue;
+					 int destVm= retainedVmList.get(destVmIndex++%retainedVmList.size());// the id of the new vm, you want to move the cloudlet to
+					try{
+					for(Cloudlet cloudlet: vmCloudletMap.get(origVm1.getId()))
 					{
-						cloudlet.setVmId(vmDestId);
+						cloudlet.setVmId(destVm);
 						double timeRan=CloudSim.clock()-cloudlet.getSubmissionTime();
 						cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
-						int[] array = {cloudlet.getCloudletId(), origVm1.getUserId(), origVm1.getId(), vmDestId, broker.getVmsToDatacentersMap().get(origVm1.getId()),(int) cloudlet.getCloudletFinishedSoFar()};
+						int[] array = {cloudlet.getCloudletId(), origVm1.getUserId(), origVm1.getId(), destVm, broker.getVmsToDatacentersMap().get(origVm1.getId()),(int) cloudlet.getCloudletFinishedSoFar()};
 						broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.CLOUDLET_MOVE, array);
 					}
-					
+					}
+					catch(Exception e)
+					{
+						
+					}
 					
 				//	vmToVmMap.put(vmPerfList.get(i).getVmId(), vm.getId());
 					i++;
@@ -260,21 +279,20 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				
 				
 				int tempI= i;
+				
 				while(--i>=0)
 				{
+					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
+					if((CloudSim.clock()-(origVm1.getStartTime())%Parameters.TIME_QUANTA<(Parameters.TIME_QUANTA-Parameters.DELTA)))
+						continue;
 					
-					
-				}
-				i=tempI;
-				while(--i>=0)
-				{
-					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),vmPerfList.get(i).getVmId()));
 					Iterator<Vm> iter= broker.getVmsCreatedList().iterator();
 					while(iter.hasNext())
 					{
 						if(iter.next().getId()==origVm1.getId())
 							iter.remove();
 					}
+					allocList.remove(i);
 					broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.VM_DESTROY,origVm1);
 					
 				}
@@ -289,6 +307,18 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 			}
 			public void setBroker(GreedyDataCenterBroker_Migration broker) {
 				this.broker = broker;
+			}
+			public List<Integer> getRetainedVmList() {
+				return retainedVmList;
+			}
+			public void setRetainedVmList(List<Integer> retainedVmList) {
+				this.retainedVmList = retainedVmList;
+			}
+			public List<Integer> getAllocList() {
+				return allocList;
+			}
+			public void setAllocList(List<Integer> destroyedVmList) {
+				this.allocList = destroyedVmList;
 			}
 
 		}

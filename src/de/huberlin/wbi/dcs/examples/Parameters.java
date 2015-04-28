@@ -209,7 +209,7 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = 0;
+	public static long seed = new Date().getTime();
 	public static Random numGen = new Random(seed);
 
 	
@@ -322,6 +322,6 @@ public class Parameters {
 	}
 public enum Gaming{OFF,BASIC,BASIC_WITH_MIGRATION,OPPORTUNISTIC}
 
-	static Gaming game=Gaming.OFF;
+	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
 
 }
