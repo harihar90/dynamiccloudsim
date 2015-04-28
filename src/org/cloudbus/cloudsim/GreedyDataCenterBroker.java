@@ -80,7 +80,8 @@ public class GreedyDataCenterBroker extends C2O {
 			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
 			Log.printLine(CloudSim.clock() + ": " + getName() + ": VM #" + vmId
 					+ " has been created in Datacenter #" + datacenterId + ", Host #"
-					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId()+" with mips:"+VmList.getById(getVmsCreatedList(), vmId).getHost().getTotalMips()/VmList.getById(getVmsCreatedList(), vmId).getHost().getNumberOfPes());
+					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getId()+" with mips:"
+					+ VmList.getById(getVmsCreatedList(), vmId).getHost().getTotalMips()/VmList.getById(getVmsCreatedList(), vmId).getHost().getNumberOfPes());
 			if(numRunningInstances==totalInstanceCountLimit)
 			{
 				vmHostMap.put(vmId,host.getId());

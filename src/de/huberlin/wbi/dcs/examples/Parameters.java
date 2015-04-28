@@ -322,6 +322,6 @@ public class Parameters {
 	}
 public enum Gaming{OFF,BASIC,BASIC_WITH_MIGRATION,OPPORTUNISTIC}
 
-	static Gaming game=Gaming.OPPORTUNISTIC;
+	static Gaming game=Gaming.OFF;
 
 }
