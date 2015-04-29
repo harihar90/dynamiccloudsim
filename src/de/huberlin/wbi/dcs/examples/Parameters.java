@@ -20,7 +20,8 @@ public class Parameters {
 	public static final double DELTA = 2;
 	public static final int TIME_QUANTA = 60;
 	public static final int recheck_interval = 10;
-	public static final int STANDARD_MIPS_PER_CU = 1200;
+	public static final int STANDARD_MIPS_PER_CU = 1210;
+	
 	public static boolean considerDataLocality = false;
 	
 	// datacenter params
