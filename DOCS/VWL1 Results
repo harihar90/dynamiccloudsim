@@ -1,0 +1,129 @@
+WL1 (i-a) - OFF
+Initialising...
+Starting CloudSim version 3.0
+Datacenter is starting...
+C2O is starting...
+Entities started.
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Trying to Create VM #0 in Datacenter
+0.1: C2O: VM #0 has been created in Datacenter #2, Host #2 with mips: 2307
+0.1: C2O: VM # 0 starts executing Task # 0 "  "
+4172.091797151265: C2O: VM # 0 completed Task # 0 "  "
+4172.091797151265: C2O: All Tasks executed. Finishing...
+4172.091797151265: C2O: Destroying VM #0
+C2O is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Datacenter is shutting down...
+C2O is shutting down...
+Simulation completed.
+Simulation completed.
+69.53486328585443
+*****Datacenter: Datacenter*****
+User id		Debt
+3		24.85
+**********************************
+Average runtime in minutes: 69.53486328585443
+Total Workload: 5000000mi 0io 0bw
+Total VM Performance: 1153mips 18503iops 236bwps
+minimum minutes (quotient): 72 0 0
+
+
+WL1 (i-b) - BASIC
+Initialising...
+Starting CloudSim version 3.0
+Datacenter is starting...
+C2O is starting...
+Entities started.
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Trying to Create VM #0 in Datacenter
+0.0: C2O: Trying to Create VM #1 in Datacenter
+0.1: C2O: VM #0 has been created in Datacenter #2, Host #0 with mips:4764
+0.1: C2O: VM #1 has been created in Datacenter #2, Host #2 with mips:2307
+0.1: C2O: Destroying VM #1
+0.1: C2O: VM # 0 starts executing Task # 0 "  "
+2020.4159269580118: C2O: VM # 0 completed Task # 0 "  "
+2020.4159269580118: C2O: All Tasks executed. Finishing...
+2020.4159269580118: C2O: Destroying VM #0
+C2O is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Datacenter is shutting down...
+C2O is shutting down...
+Simulation completed.
+Simulation completed.
+33.67359878263353
+*****Datacenter: Datacenter*****
+User id		Debt
+3		33.95
+**********************************
+Average runtime in minutes: 33.67359878263353
+Total Workload: 5000000mi 0io 0bw
+Total VM Performance: 3535mips 36213iops 533bwps
+minimum minutes (quotient): 23 0 0
+
+Wl1 (i-c) - OPPORTUNISTIC
+Initialising...
+Starting CloudSim version 3.0
+Datacenter is starting...
+C2O is starting...
+Entities started.
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Trying to Create VM #0 in Datacenter
+0.1: C2O: VM #0 has been created in Datacenter #2, Host #2 with mips:2307
+0.1: C2O: VM # 0 starts executing Task # 0 "  "
+20.1: C2O: VM #1 has been created in Datacenter #2, Host #3 with mips:1120
+8873.60705752622: C2O: VM # 1 completed Task # 0 "  "
+8873.60705752622: C2O: All Tasks executed. Finishing...
+8873.60705752622: C2O: Destroying VM #1
+C2O is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Datacenter is shutting down...
+C2O is shutting down...
+Simulation completed.
+Simulation completed.
+147.89345095877033
+*****Datacenter: Datacenter*****
+User id		Debt
+3		51.05
+**********************************
+Average runtime in minutes: 147.89345095877033
+Total Workload: 5000000mi 0io 0bw
+Total VM Performance: 1713mips 44417iops 518bwps
+minimum minutes (quotient): 48 0 0
+
+
+Wl1 (i-d) - OPPORTUNISTIC
+
+*****Datacenter: Datacenter*****
+User id		Debt
+3		44.45
+**********************************
+Average runtime in minutes: 125.23438905316054
+Total Workload: 500000000mi 0io 0bw
+Total VM Performance: 233008mips 4120001iops 51139bwps
+minimum minutes (quotient): 35 0 0
+
+WL1 (i-e) - BASIC
+
+*****Datacenter: Datacenter*****
+User id		Debt
+3		37.1
+**********************************
+Average runtime in minutes: 115.9813234273124
+Total Workload: 500000000mi 0io 0bw
+Total VM Performance: 248248mips 4123833iops 51006bwps
+minimum minutes (quotient): 33 0 0
+
+WL1 (i-f) - NORMAL
+
+*****Datacenter: Datacenter*****
+User id		Debt
+3		23.2
+**********************************
+Average runtime in minutes: 141.07445933913493
+Total Workload: 500000000mi 0io 0bw
+Total VM Performance: 122491mips 2020539iops 24898bwps
+minimum minutes (quotient): 68 0 0
+
