@@ -20,6 +20,7 @@ public class Parameters {
 	public static final double DELTA = 2;
 	public static final int TIME_QUANTA = 60;
 	public static final int recheck_interval = 10;
+	public static final int STANDARD_MIPS_PER_CU = 1200;
 	public static boolean considerDataLocality = false;
 	
 	// datacenter params
@@ -322,6 +323,7 @@ public class Parameters {
 	}
 public enum Gaming{OFF,BASIC,BASIC_WITH_MIGRATION,OPPORTUNISTIC}
 
-	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
-
+	static Gaming game=Gaming.OPPORTUNISTIC;
+	public enum Charging{NULL,COUNTERACT_GAMING}
+public static Charging charging = Charging.COUNTERACT_GAMING;
 }

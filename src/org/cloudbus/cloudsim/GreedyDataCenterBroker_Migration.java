@@ -3,6 +3,7 @@ package org.cloudbus.cloudsim;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -213,7 +214,10 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				long j=1;
 				long vmDestroyedCount=0;
 				while(j++ !=0){
+					if(CloudSim.isStopped())
+						return;
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
+					
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
@@ -224,6 +228,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 							e.printStackTrace();
 						}
 					}
+					
 				List<Task> cloudlets= broker.getCloudletList();
 				
 				HashMap<Integer,Double> vmPerformance = new HashMap<Integer,Double>();
@@ -254,7 +259,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 						break;
 					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
 					if((CloudSim.clock()-(origVm1.getStartTime())%Parameters.TIME_QUANTA<(Parameters.TIME_QUANTA-Parameters.DELTA)))
-						continue;
+						{i++;continue;}
 					 int destVm= retainedVmList.get(destVmIndex++%retainedVmList.size());// the id of the new vm, you want to move the cloudlet to
 					try{
 					for(Cloudlet cloudlet: vmCloudletMap.get(origVm1.getId()))

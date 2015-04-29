@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.jws.soap.SOAPBinding.ParameterStyle;
+
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.core.CloudSimTags;
 import org.cloudbus.cloudsim.core.SimEntity;
@@ -22,7 +24,7 @@ import org.cloudbus.cloudsim.core.SimEvent;
 
 import de.huberlin.wbi.dcs.DynamicVm;
 import de.huberlin.wbi.dcs.examples.Parameters;
-
+import de.huberlin.wbi.dcs.DynamicHost;;
 /**
  * Datacenter class is a CloudResource whose hostList are virtualized. It deals with processing of
  * VM queries (i.e., handling of VMs) instead of processing Cloudlet-related queries. So, even
@@ -521,10 +523,15 @@ public class Datacenter extends SimEntity {
 			debit = 0.0;
 		}
 
+		if(Parameters.charging==Parameters.Charging.COUNTERACT_GAMING)
 		debit += getCharacteristics().getCostPerSecond()*
 				(Math.ceil((CloudSim.clock() - vm.getStartTime())/Parameters.TIME_QUANTA) * Parameters.TIME_QUANTA) *
-				vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe();
-
+				vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe()*((DynamicHost)(vmAllocationPolicy.getHost(vm))).getMipsPerPe()/((DynamicHost)(vmAllocationPolicy.getHost(vm))).getNumberOfCusPerPe()/Parameters.STANDARD_MIPS_PER_CU;
+		else
+			debit += getCharacteristics().getCostPerSecond()*
+			(Math.ceil((CloudSim.clock() - vm.getStartTime())/Parameters.TIME_QUANTA) * Parameters.TIME_QUANTA) *
+			vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe();
+		
 		getDebts().put(vm.getUserId(), debit);
 	}
 

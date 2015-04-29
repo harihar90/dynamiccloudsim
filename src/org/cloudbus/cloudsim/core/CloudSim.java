@@ -292,6 +292,8 @@ public class CloudSim {
 	/** The abrupt terminate. */
 	private static boolean abruptTerminate = false;
 
+	private static boolean stopped;
+
 	/**
 	 * Initialise the simulation for stand alone simulations. This function should be called at the
 	 * start of the simulation.
@@ -511,6 +513,7 @@ public class CloudSim {
 	 * Internal method used to stop the simulation. This method should <b>not</b> be used directly.
 	 */
 	public static void runStop() {
+		setStopped(true);
 		printMessage("Simulation completed.");
 	}
 
@@ -923,6 +926,14 @@ public class CloudSim {
 	 */
 	public static boolean isPaused() {
 		return paused;
+	}
+
+	public static boolean isStopped() {
+		return stopped;
+	}
+
+	public static void setStopped(boolean stopped) {
+		CloudSim.stopped = stopped;
 	}
 
 }

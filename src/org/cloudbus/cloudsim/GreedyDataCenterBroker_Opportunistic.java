@@ -3,6 +3,7 @@ package org.cloudbus.cloudsim;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -183,8 +184,11 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 			public void run() {
 				long j=1;
 				long vmCount= broker.getVmList().size();
-				while(j++ !=10){
+				while(j++ !=10000){
+					if(CloudSim.isStopped())
+						return;
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
+					
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
@@ -195,6 +199,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 							e.printStackTrace();
 						}
 					}
+					
 				List<Task> cloudlets= broker.getCloudletList();
 				
 				HashMap<Integer,Double> vmPerformance = new HashMap<Integer,Double>();
