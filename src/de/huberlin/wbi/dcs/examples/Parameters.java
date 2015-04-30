@@ -319,6 +319,7 @@ public class Parameters {
 
 	}
 
+<<<<<<< HEAD
 	public enum Gaming {
 		OFF, BASIC, BASIC_WITH_MIGRATION, OPPORTUNISTIC
 	}
@@ -332,4 +333,9 @@ public class Parameters {
 	public static Charging charging = Charging.NULL;
 	public static final int nUsers = 1;
 	public static final long RECHECK_LIMIT = 100;
+=======
+	static Gaming game=Gaming.OPPORTUNISTIC;
+	public enum Charging{NULL,COUNTERACT_GAMING}
+	public static Charging charging = Charging.NULL;
+>>>>>>> 34486891a339d4a05cce88822a09a6142c953bf3
 }
