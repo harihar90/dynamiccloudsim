@@ -35,7 +35,7 @@ public class Parameters {
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
-	public static int nXeon5507 = 0;
+	public static int nXeon5507 = 2;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 4;
 	public static int mipsPerCoreXeon5507 = 2260;
@@ -53,7 +53,7 @@ public class Parameters {
 	// vm params
 	public static int nVms = 1;
 
-	public static int tVms = 1;// total number of vms created ( including those
+	public static int tVms = 2;// total number of vms created ( including those
 								// being destroyed)
 	public static int taskSlotsPerVm = 1;
 	public static double numberOfCusPerPe = 1;
@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 1;
+	public static int numberOfRuns = 100;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -334,7 +334,7 @@ public class Parameters {
 	public static final int nUsers = 1;
 	public static final long RECHECK_LIMIT = 10000;
 
-	static Gaming game=Gaming.BASIC;
+	static Gaming game=Gaming.OFF;
 	
 
 }

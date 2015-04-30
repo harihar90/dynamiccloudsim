@@ -322,7 +322,6 @@ public class WorkflowExample {
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
 
-		ram = (int) (2 * 1024 * Parameters.nCusPerCoreXeonE5430 * Parameters.nCoresXeonE5430);
 		for (int i = 0; i < Parameters.nXeonE5430; i++) {
 			double mean = 1d;
 			double dev = Parameters.bwHeterogeneityCV;
