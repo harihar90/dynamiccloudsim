@@ -308,4 +308,9 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 		}
 	}
 
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

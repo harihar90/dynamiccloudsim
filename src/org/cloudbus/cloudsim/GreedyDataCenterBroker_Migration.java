@@ -48,6 +48,12 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 		this.mipsThreshold = mipsThreshold;
 	}
 	boolean monitorStarted=false;
+	private Thread monitor;
+	@Override
+	public void clear()
+	{
+		monitor.stop();
+	}
 	@Override
 	/**
 	 * Process the ack received due to a request for VM creation.
@@ -56,6 +62,8 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 	 * @pre ev != null
 	 * @post $none
 	 */
+
+	
 	
 	protected void processVmCreate(SimEvent ev) throws Exception {
 		int[] data = (int[]) ev.getData();
@@ -106,7 +114,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 
 				
 
-				Thread monitor=new Thread(new PerformanceMonitoringTask(this, threshold,retainedVmList,destroyedVmList));
+				monitor = new Thread(new PerformanceMonitoringTask(this, threshold,retainedVmList,destroyedVmList));
 				monitor.setPriority(Thread.MAX_PRIORITY);
 				monitor.start();
 				
@@ -214,14 +222,14 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				long j=1;
 				long vmDestroyedCount=0;
 				while(j++ !=Parameters.RECHECK_LIMIT){
-					if(CloudSim.isStopped())
-						return;
+					
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
 					
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
 						}
+						
 						try {
 							Thread.sleep(100);
 						} catch (InterruptedException e) {
@@ -256,7 +264,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				while(i<allocList.size())
 				{
 					if(vmDestroyedCount==broker.getTotalInstanceCountLimit()-broker.getPerQuantumInstanceCount())
-						break;
+						{CloudSim.resumeSimulation();return;}
 					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
 					if((((CloudSim.clock()-(origVm1.getStartTime()))%Parameters.TIME_QUANTA)<(Parameters.TIME_QUANTA-Parameters.DELTA)))
 					{i++;	continue;}
@@ -301,10 +309,11 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 					}
 					allocList.remove(i);
 					broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.VM_DESTROY,origVm1);
+					vmDestroyedCount++;
 					
 				}
-				if(vmDestroyedCount==broker.getTotalInstanceCountLimit())
-					break;
+				if(vmDestroyedCount==broker.getTotalInstanceCountLimit()-broker.getPerQuantumInstanceCount())
+					{CloudSim.resumeSimulation();return;}
 				CloudSim.resumeSimulation();
 				}
 				CloudSim.resumeSimulation();

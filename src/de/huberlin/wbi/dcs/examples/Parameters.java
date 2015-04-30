@@ -17,7 +17,7 @@ import de.huberlin.wbi.dcs.distributions.NormalDistribution;
 
 public class Parameters {
 
-	public static final double DELTA = 100;
+	public static final double DELTA = 200;
 	public static final int TIME_QUANTA = 3600;
 	public static final int recheck_interval = 100;
 	public static long STANDARD_MIPS_PER_CU = 1210;
@@ -30,7 +30,7 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nAMD2218HE = 2;
+	public static int nAMD2218HE = 1000;
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
@@ -201,7 +201,7 @@ public class Parameters {
 
 	// the probability for a task to end in failure instead of success once it's
 	// execution time has passed
-	public static double likelihoodOfFailure = 0.002;
+	public static double likelihoodOfFailure = 0;
 	public static double runtimeFactorInCaseOfFailure = 20d;
 
 	// the coefficient of variation for information that is typically not
@@ -334,7 +334,9 @@ public class Parameters {
 	public static final int nUsers = 1;
 	public static final long RECHECK_LIMIT = 10000;
 
-	static Gaming game=Gaming.OFF;
+
+	static Gaming game=Gaming.OPPORTUNISTIC;
+
 	
 
 }

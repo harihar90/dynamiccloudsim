@@ -185,8 +185,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				long j=1;
 				long vmCount= broker.getVmList().size();
 				while(j++ !=10000){
-					if(CloudSim.isStopped())
-						return;
+					
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
 					
 					while (true) {
@@ -242,7 +241,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				while(i<vmPerfList.size() && vmPerfList.get(i).getCloudletsLength()<broker.getThreshold())
 				{
 					if(vmCount==broker.getTotalInstanceCountLimit())
-						break;
+					{CloudSim.resumeSimulation();return;}
 					DynamicVm origVm=((DynamicVm)VmList.getById(broker.getVmList(),vmPerfList.get(i).getVmId()));
 					
 					DynamicVm vm= new DynamicVm(broker.getVmList().size()+i, origVm.getUserId(), origVm.getNumberOfCusPerPe(), origVm.getNumberOfPes(), origVm.getRam(), origVm.getSize(), origVm.getVmm(), new CloudletSchedulerGreedyDivided(), new DynamicModel(), "output/run_" +  "_vm_" + i + ".csv", origVm.getTaskSlots());
@@ -299,7 +298,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 					
 				}
 				if(vmCount==broker.getTotalInstanceCountLimit())
-					break;
+					{CloudSim.resumeSimulation();return;}
 				CloudSim.resumeSimulation();
 				}
 				CloudSim.resumeSimulation();
