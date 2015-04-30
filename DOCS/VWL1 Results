@@ -127,3 +127,42 @@ Total Workload: 500000000mi 0io 0bw
 Total VM Performance: 122491mips 2020539iops 24898bwps
 minimum minutes (quotient): 68 0 0
 
+WL2 (100 Runs)-10 Hosts of each type:
+1VM,tvm=2:
+Deviation: 0.4
+OFF:
+
+Run Time for user:0:290 & debt:40.23710293312215
+BASIC:
+
+Run Time for user:0:142 & debt:66.20388955730012
+BASIC_WITH_MIGRATION:
+
+Run Time for user:0:184 & debt:76.38528034579643
+
+OPPORTUNISTIC:
+Run Time for user:0:178 & debt:39.29869986889
+
+2VMs,tvm=4:
+OFF:
+Run Time for user:0:185 & debt:76.69283623253266
+BASIC:
+Run Time for user:0:110 & debt:122.87881232425195
+BASIC_WITH_MIGRATION:
+Run Time for user:0:131 & debt:146.37861524510257
+OPPORTUNISTIC:
+Run Time for user:0:199 & debt:77.83455818009541
+
+
+WL4:
+4vms,tvm=8
+Run Time for user:0:172 & debt:166.89425092431668
+Run Time for user:0:83 & debt:233.4533615311831
+Run Time for user:0:147 & debt:318.5202289370669
+Run Time for user:0:171 & debt:166.88137531096055
+
+2VMs,tvm=4
+Run Time for user:0:177 & debt:86.36989791567137
+Run Time for user:0:150 & debt:137.05265873957325
+Run Time for user:0:162 & debt:161.43043485596593
+Run Time for user:0:177 & debt:86.36989791567137

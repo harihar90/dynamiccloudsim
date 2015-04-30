@@ -2,8 +2,10 @@ package de.huberlin.wbi.dcs.examples;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.cloudbus.cloudsim.Datacenter;
@@ -40,11 +42,12 @@ import de.huberlin.wbi.dcs.workflow.scheduler.StaticRoundRobinScheduler;
 public class WorkflowExample {
 
 	public static void main(String[] args) {
-		double totalRuntime = 0d;
+		Map<Integer,Double> debtMap = new HashMap<Integer,Double>();
 		Parameters.parseParameters(args);
-
+		int[] totalRuntime= new int[Parameters.nUsers];
 		try { 
 			Datacenter dc = null;
+			
 			for (int i = 0; i < Parameters.numberOfRuns; i++) {
 				WorkflowExample ex = new WorkflowExample();
 				if (!Parameters.outputDatacenterEvents) {
@@ -55,23 +58,33 @@ public class WorkflowExample {
 				Calendar calendar = Calendar.getInstance();
 				boolean trace_flag = false; // mean trace events
 				CloudSim.init(num_user, calendar, trace_flag);
-
-			    dc=ex.createDatacenter("Datacenter");
+				List<AbstractWorkflowScheduler> users= new ArrayList<AbstractWorkflowScheduler>();
+			    dc=ex.createDatacenter("Datacenter"+i,i);
+			    for(int j=0;j<Parameters.nUsers;j++){
 				AbstractWorkflowScheduler scheduler = ex.createScheduler(i);
 				ex.createVms(i, scheduler);
 				Workflow workflow = buildWorkflow(scheduler);
 				ex.submitWorkflow(workflow, scheduler);
-
+				users.add(scheduler);
+				}
 				// Start the simulation
 				CloudSim.startSimulation();
 				CloudSim.stopSimulation();
-				
-				totalRuntime += scheduler.getRuntime();
-				System.out.println(scheduler.getRuntime() / 60);
+				for(int j=0;j<Parameters.nUsers;j++){
+				totalRuntime[j] += users.get(j).getRuntime()/60;
+				double debt = (dc.getDebts().get(users.get(j).getId())==null)?0:dc.getDebts().get(users.get(j).getId());
+				if(debtMap.get(users.get(j).getId())==null)
+					debtMap.put(users.get(j).getId(), debt);
+				else
+					debtMap.put(users.get(j).getId(), debt+debtMap.get(users.get(j).getId()));
 			}
-			dc.printDebts();
-			Log.printLine("Average runtime in minutes: " + totalRuntime
-					/ Parameters.numberOfRuns / 60);
+			}
+			for(int j=0;j<Parameters.nUsers;j++){
+				
+				System.out.println("Run Time for user:"+j+":"+totalRuntime[j] /Parameters.numberOfRuns +" & debt:"+debtMap.get(j+3)/Parameters.numberOfRuns);
+			}
+			
+			
 			Log.printLine("Total Workload: " + Task.getTotalMi() + "mi "
 					+ Task.getTotalIo() + "io " + Task.getTotalBw() + "bw");
 			Log.printLine("Total VM Performance: " + DynamicHost.getTotalMi()
@@ -88,7 +101,7 @@ public class WorkflowExample {
 
 	}
 
-	private VmAllocationPolicyRandom vmPolicy;
+	private VmAllocationPolicyRandom[] vmPolicy= new VmAllocationPolicyRandom[Parameters.numberOfRuns];
 	public AbstractWorkflowScheduler createScheduler(int i) {
 		try {
 			switch (Parameters.scheduler) {
@@ -107,12 +120,12 @@ public class WorkflowExample {
 			case C2O:
 				
 				if(Parameters.game==Parameters.Gaming.BASIC)
-				return new GreedyDataCenterBroker("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
+				return new GreedyDataCenterBroker("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				
 				else if(Parameters.game==Parameters.Gaming.OPPORTUNISTIC)
-					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
+					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
 				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
-					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy,Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
+					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
 				else
 					return new C2O("C2O",Parameters.taskSlotsPerVm, i);
 			default:
@@ -179,15 +192,17 @@ public class WorkflowExample {
 	}
 
 	// all numbers in 1000 (e.g. kb/s)
-	public Datacenter createDatacenter(String name) {
+	public Datacenter createDatacenter(String name,int run) {
 		Random numGen;
 		numGen = Parameters.numGen;
 		List<DynamicHost> hostList = new ArrayList<DynamicHost>();
 		int hostId = 0;
 		long storage = 1024 * 1024;
-
+		long perfAverage =0;
+		
 		int ram = (int) (2 * 1024 * Parameters.nCusPerCoreAMD2218HE * Parameters.nCoresAMD2218HE);
 		for (int i = 0; i < Parameters.nAMD2218HE; i++) {
+			
 			double mean = 1d;
 			double dev = Parameters.bwHeterogeneityCV;
 			ContinuousDistribution dist = Parameters.getDistribution(
@@ -236,11 +251,13 @@ public class WorkflowExample {
 			while (mips <= 0) {
 				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
 			}
+			
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
 				iops *= Parameters.stragglerPerformanceCoefficient;
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
+			perfAverage+=mips/Parameters.nCusPerCoreAMD2218HE;
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreAMD2218HE, Parameters.nCoresAMD2218HE, mips));
 		}
@@ -300,6 +317,7 @@ public class WorkflowExample {
 				iops *= Parameters.stragglerPerformanceCoefficient;
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
+			perfAverage+=mips/Parameters.nCusPerCoreXeon5507;
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
@@ -359,6 +377,7 @@ public class WorkflowExample {
 				iops *= Parameters.stragglerPerformanceCoefficient;
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
+			perfAverage+=mips/Parameters.nCusPerCoreXeonE5430;
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeonE5430, Parameters.nCoresXeonE5430, mips));
 		}
@@ -418,10 +437,13 @@ public class WorkflowExample {
 				iops *= Parameters.stragglerPerformanceCoefficient;
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
+			perfAverage+=mips/Parameters.nCusPerCoreXeonE5645;
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeonE5645, Parameters.nCoresXeonE5645, mips));
 		}
-
+		perfAverage/=(Parameters.nAMD2218HE+Parameters.nXeon5507+Parameters.nXeonE5430+Parameters.nXeonE5645);
+		Parameters.STANDARD_MIPS_PER_CU=perfAverage;
+		System.out.println("Average Performance:"+perfAverage);
 		String arch = "x86";
 		String os = "Linux";
 		String vmm = "Xen";
@@ -437,10 +459,10 @@ public class WorkflowExample {
 				costPerStorage, costPerBw);
 
 		Datacenter datacenter = null;
-		vmPolicy=new VmAllocationPolicyRandom(hostList, Parameters.seed++);
+		vmPolicy[run]=new VmAllocationPolicyRandom(hostList, Parameters.seed++);
 		
 		try {
-			datacenter = new Datacenter(name, characteristics,vmPolicy
+			datacenter = new Datacenter(name, characteristics,vmPolicy[run]
 					,storageList, 0);
 		} catch (Exception e) {
 			e.printStackTrace();

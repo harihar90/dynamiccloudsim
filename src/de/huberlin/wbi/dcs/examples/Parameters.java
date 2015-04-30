@@ -17,25 +17,25 @@ import de.huberlin.wbi.dcs.distributions.NormalDistribution;
 
 public class Parameters {
 
-	public static final double DELTA = 2;
-	public static final int TIME_QUANTA = 60;
-	public static final int recheck_interval = 10;
-	public static final int STANDARD_MIPS_PER_CU = 1210;
-	
+	public static final double DELTA = 100;
+	public static final int TIME_QUANTA = 3600;
+	public static final int recheck_interval = 1000;
+	public static long STANDARD_MIPS_PER_CU = 1210;
+
 	public static boolean considerDataLocality = false;
-	
+
 	// datacenter params
 	// Kb / s
 	public static long bwpsPerPe = 256;
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nAMD2218HE = 2;
+	public static int nAMD2218HE = 10;
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
-	public static int nXeon5507 = 2;
+	public static int nXeon5507 = 10;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 4;
 	public static int mipsPerCoreXeon5507 = 2260;
@@ -44,20 +44,18 @@ public class Parameters {
 	public static int nCusPerCoreXeonE5430 = 2;
 	public static int nCoresXeonE5430 = 4;
 	public static int mipsPerCoreXeonE5430 = 2660;
-	
+
 	public static int nXeonE5645 = 0;
 	public static int nCusPerCoreXeonE5645 = 2;
 	public static int nCoresXeonE5645 = 6;
 	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
-	public static int nVms = 1;
+	public static int nVms = 2;
 
-	public static int tVms=2;// total number of vms created ( including those being destroyed)
+	public static int tVms = 4;// total number of vms created ( including those
+								// being destroyed)
 	public static int taskSlotsPerVm = 1;
-
-
-
 	public static double numberOfCusPerPe = 1;
 	public static int numberOfPes = 1;
 	public static int ram = (int) (1.7 * 1024);
@@ -80,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 1;
+	public static int numberOfRuns = 100;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -211,10 +209,8 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = new Date().getTime();
+	public static long seed = 48;
 	public static Random numGen = new Random(seed);
-
-	
 
 	public static ContinuousDistribution getDistribution(
 			Distribution distribution, double mean, int alpha, double beta,
@@ -322,9 +318,18 @@ public class Parameters {
 		}
 
 	}
-public enum Gaming{OFF,BASIC,BASIC_WITH_MIGRATION,OPPORTUNISTIC}
 
-	static Gaming game=Gaming.OPPORTUNISTIC;
-	public enum Charging{NULL,COUNTERACT_GAMING}
-public static Charging charging = Charging.COUNTERACT_GAMING;
+	public enum Gaming {
+		OFF, BASIC, BASIC_WITH_MIGRATION, OPPORTUNISTIC
+	}
+
+	static Gaming game = Gaming.OPPORTUNISTIC;
+
+	public enum Charging {
+		NULL, COUNTERACT_GAMING
+	}
+
+	public static Charging charging = Charging.NULL;
+	public static final int nUsers = 1;
+	public static final long RECHECK_LIMIT = 100;
 }

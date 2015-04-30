@@ -63,7 +63,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 		if (result == CloudSimTags.TRUE) {
 			
 			setNumRunningInstances(getNumRunningInstances()+1);
-			DynamicHost host=(DynamicHost) getVmPolicy().getVmTable().get("3-"+vmId);
+			DynamicHost host=(DynamicHost) getVmPolicy().getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+vmId);
 			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
 			getVmsToDatacentersMap().put(vmId, datacenterId);
 			
@@ -221,7 +221,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				
 				for(Integer vmId:vmCloudletMap.keySet())
 				{
-					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get("3-"+vmId);
+					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+vmId);
 					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null || (CloudSim.clock()-((DynamicVm)VmList.getById(broker.getVmList(),vmId)).getStartTime())%Parameters.TIME_QUANTA>(Parameters.TIME_QUANTA-Parameters.DELTA))
 						continue;
 					double performance=(dynamicHost.getMipsPerPe()/dynamicHost.getNumberOfCusPerPe());

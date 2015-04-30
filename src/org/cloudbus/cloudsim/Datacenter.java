@@ -499,10 +499,10 @@ public class Datacenter extends SimEntity {
 	 */
 	protected void processVmDestroy(SimEvent ev, boolean ack) {
 		Vm vm = (Vm) ev.getData();
-		
+		addVmExecutionCost(vm);
 		getVmAllocationPolicy().deallocateHostForVm(vm);
 		
-		addVmExecutionCost(vm);
+		
 		if (ack) {
 			int[] data = new int[3];
 			data[0] = getId();
@@ -1208,7 +1208,7 @@ public class Datacenter extends SimEntity {
 	 * 
 	 * @return the debts
 	 */
-	protected Map<Integer, Double> getDebts() {
+	public Map<Integer, Double> getDebts() {
 		return debts;
 	}
 

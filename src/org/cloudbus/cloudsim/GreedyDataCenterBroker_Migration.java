@@ -66,7 +66,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 		if (result == CloudSimTags.TRUE) {
 			
 			setNumRunningInstances(getNumRunningInstances()+1);
-			DynamicHost host=(DynamicHost) getVmPolicy().getVmTable().get("3-"+vmId);
+			DynamicHost host=(DynamicHost) getVmPolicy().getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+vmId);
 			getVmsCreatedList().add(VmList.getById(getVmList(), vmId));
 			getVmsToDatacentersMap().put(vmId, datacenterId);
 			
@@ -80,7 +80,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				while(iter.hasNext())
 				{
 					Entry<Integer,Integer> entry=iter.next();
-					allocList.add(new AllocatedVM(entry.getKey(),((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getMipsPerPe()/((DynamicHost) vmPolicy.getVmTable().get("3-"+entry.getKey())).getNumberOfCusPerPe()));
+					allocList.add(new AllocatedVM(entry.getKey(),((DynamicHost) vmPolicy.getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+entry.getKey())).getMipsPerPe()/((DynamicHost) vmPolicy.getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+entry.getKey())).getNumberOfCusPerPe()));
 				}
 				Collections.sort(allocList, new Comparator<AllocatedVM>(){
 					   public int compare(AllocatedVM o1, AllocatedVM o2){
@@ -213,7 +213,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 			public void run() {
 				long j=1;
 				long vmDestroyedCount=0;
-				while(j++ !=0){
+				while(j++ !=Parameters.RECHECK_LIMIT){
 					if(CloudSim.isStopped())
 						return;
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
