@@ -16,7 +16,7 @@ public class NormalDistribution implements ContinuousDistribution {
 	private final double dev;
 
 	public NormalDistribution(Random seed, double mean, double dev) {
-		if (dev <= 0.0) {
+		if (dev < 0.0) {
 			throw new IllegalArgumentException("Deviation must be greater than 0.0");
 		}
 

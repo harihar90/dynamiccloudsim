@@ -44,7 +44,7 @@ public class WorkflowExample {
 	public static void main(String[] args) {
 		Map<Integer,Double> debtMap = new HashMap<Integer,Double>();
 		Parameters.parseParameters(args);
-		int[] totalRuntime= new int[Parameters.nUsers];
+		double[] totalRuntime= new double[Parameters.nUsers];
 		try { 
 			Datacenter dc = null;
 			

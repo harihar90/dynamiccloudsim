@@ -85,6 +85,7 @@ public class DynamicModel {
 		while (nextMiCoefficient <= 0) {
 			nextMiCoefficient = dist.sample();
 		}
+		nextMiCoefficient=1;
 		return nextMiCoefficient;
 	}
 

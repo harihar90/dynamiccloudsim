@@ -30,12 +30,12 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nAMD2218HE = 10;
+	public static int nAMD2218HE = 2;
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
-	public static int nXeon5507 = 10;
+	public static int nXeon5507 = 0;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 4;
 	public static int mipsPerCoreXeon5507 = 2260;
@@ -51,9 +51,9 @@ public class Parameters {
 	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
-	public static int nVms = 2;
+	public static int nVms = 1;
 
-	public static int tVms = 4;// total number of vms created ( including those
+	public static int tVms = 1;// total number of vms created ( including those
 								// being destroyed)
 	public static int taskSlotsPerVm = 1;
 	public static double numberOfCusPerPe = 1;
@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 100;
+	public static int numberOfRuns = 1;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -121,9 +121,9 @@ public class Parameters {
 	public static int bwHeterogeneityPopulation = 0;
 
 	// CPU Dynamics
-	public static double cpuBaselineChangesPerHour = 0.5;
+	public static double cpuBaselineChangesPerHour = 0d;
 	public static Distribution cpuDynamicsDistribution = Distribution.NORMAL;
-	public static double cpuDynamicsCV = 0.054;
+	public static double cpuDynamicsCV = 0.01;
 	public static int cpuDynamicsAlpha = 0;
 	public static double cpuDynamicsBeta = 0d;
 	public static double cpuDynamicsShape = 0d;
@@ -196,7 +196,7 @@ public class Parameters {
 	public static int bwNoisePopulation = 0;
 
 	// straggler parameters
-	public static double likelihoodOfStraggler = 0.015;
+	public static double likelihoodOfStraggler = 0;
 	public static double stragglerPerformanceCoefficient = 0.5;
 
 	// the probability for a task to end in failure instead of success once it's
@@ -209,7 +209,7 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = 48;
+	public static long seed = 53;
 	public static Random numGen = new Random(seed);
 
 	public static ContinuousDistribution getDistribution(
@@ -332,9 +332,9 @@ public class Parameters {
 
 	public static Charging charging = Charging.NULL;
 	public static final int nUsers = 1;
-	public static final long RECHECK_LIMIT = 100;
+	public static final long RECHECK_LIMIT = 10000;
 
-	static Gaming game=Gaming.OPPORTUNISTIC;
+	static Gaming game=Gaming.BASIC;
 	
 
 }
