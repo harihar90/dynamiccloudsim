@@ -326,5 +326,5 @@ public enum Gaming{OFF,BASIC,BASIC_WITH_MIGRATION,OPPORTUNISTIC}
 
 	static Gaming game=Gaming.OPPORTUNISTIC;
 	public enum Charging{NULL,COUNTERACT_GAMING}
-public static Charging charging = Charging.COUNTERACT_GAMING;
+	public static Charging charging = Charging.NULL;
 }
