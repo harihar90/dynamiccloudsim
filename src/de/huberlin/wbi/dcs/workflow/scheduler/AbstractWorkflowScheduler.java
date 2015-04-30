@@ -298,8 +298,8 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 
 		if (tasksRemaining()) {
 			submitTasks();
-		} else if (idleTaskSlots.size() >= getVmsCreatedList().size()
-				* getTaskSlotsPerVm()) {
+		} else if ((idleTaskSlots.size() >= getVmsCreatedList().size()
+				* getTaskSlotsPerVm()) && tasks.isEmpty()) {
 			Log.printLine(CloudSim.clock() + ": " + getName()
 					+ ": All Tasks executed. Finishing...");
 			terminate();

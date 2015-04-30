@@ -258,8 +258,10 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 					if(vmDestroyedCount==broker.getTotalInstanceCountLimit()-broker.getPerQuantumInstanceCount())
 						break;
 					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
-					if((CloudSim.clock()-(origVm1.getStartTime())%Parameters.TIME_QUANTA<(Parameters.TIME_QUANTA-Parameters.DELTA)))
-						{i++;continue;}
+					if((((CloudSim.clock()-(origVm1.getStartTime()))%Parameters.TIME_QUANTA)<(Parameters.TIME_QUANTA-Parameters.DELTA)))
+					{i++;	continue;}
+					
+
 					 int destVm= retainedVmList.get(destVmIndex++%retainedVmList.size());// the id of the new vm, you want to move the cloudlet to
 					try{
 					for(Cloudlet cloudlet: vmCloudletMap.get(origVm1.getId()))
@@ -288,8 +290,8 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 				while(--i>=0)
 				{
 					DynamicVm origVm1=((DynamicVm)VmList.getById(broker.getVmList(),allocList.get(i)));
-					if((CloudSim.clock()-(origVm1.getStartTime())%Parameters.TIME_QUANTA<(Parameters.TIME_QUANTA-Parameters.DELTA)))
-						continue;
+					if((((CloudSim.clock()-(origVm1.getStartTime()))%Parameters.TIME_QUANTA)<(Parameters.TIME_QUANTA-Parameters.DELTA)))
+						{continue;}
 					
 					Iterator<Vm> iter= broker.getVmsCreatedList().iterator();
 					while(iter.hasNext())
