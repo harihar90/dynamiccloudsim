@@ -19,7 +19,7 @@ public class Parameters {
 
 	public static final double DELTA = 100;
 	public static final int TIME_QUANTA = 3600;
-	public static final int recheck_interval = 1000;
+	public static final int recheck_interval = 100;
 	public static long STANDARD_MIPS_PER_CU = 1210;
 
 	public static boolean considerDataLocality = false;
