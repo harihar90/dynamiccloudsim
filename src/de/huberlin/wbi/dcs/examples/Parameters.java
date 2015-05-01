@@ -35,7 +35,7 @@ public class Parameters {
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
-	public static int nXeon5507 = 2;
+	public static int nXeon5507 = 0;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 4;
 	public static int mipsPerCoreXeon5507 = 2260;
@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 1;
+	public static int numberOfRuns = 100;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -335,7 +335,7 @@ public class Parameters {
 	public static final long RECHECK_LIMIT = 10000;
 
 
-	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
+	static Gaming game=Gaming.OPPORTUNISTIC;
 
 	
 

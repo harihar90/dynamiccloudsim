@@ -64,8 +64,8 @@ public class DynamicModel {
 				-(timespanInHours * Parameters.ioBaselineChangesPerHour));
 		double chanceOfBwChange = 1 - Math.pow(Math.E,
 				-(timespanInHours * Parameters.bwBaselineChangesPerHour));
-
-		if (numGen.nextDouble() <= chanceOfMiChange) {
+		
+		if (numGen.nextDouble() <= 0) {
 			changeMiBaseline();
 		}
 		if (numGen.nextDouble() <= chanceOfIoChange) {

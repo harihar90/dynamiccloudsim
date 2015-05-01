@@ -90,6 +90,13 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 		} else {
 			task.setScheduledToFail(false);
 		}
+		while(getVmsToDatacentersMap().get(vm.getId())==null){
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}}
 		sendNow(getVmsToDatacentersMap().get(vm.getId()),
 				CloudSimTags.CLOUDLET_SUBMIT, task);
 		this.cloudletList.add(task);
