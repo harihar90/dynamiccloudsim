@@ -250,8 +250,8 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-			//	mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
-				mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
+			//	mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
 			}
 			
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
@@ -312,7 +312,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-				mips = (long) (long) (Parameters.mipsPerCoreXeon5507);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreXeon5507);
 			}
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -371,7 +371,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-				mips = (long) (long) (Parameters.mipsPerCoreXeonE5430);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreXeonE5430);
 			}
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -431,7 +431,7 @@ public class WorkflowExample {
 					Parameters.cpuHeterogeneityPopulation);
 			long mips = 0;
 			while (mips <= 0) {
-				mips = (long) (long) (Parameters.mipsPerCoreXeonE5645);
+				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreXeonE5645);
 			}
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
