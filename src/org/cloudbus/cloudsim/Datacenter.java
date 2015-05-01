@@ -707,7 +707,7 @@ public class Datacenter extends SimEntity {
 					failed = true;
 				} else {
 					// time to transfer the files
-					cl.setCloudletFinishedSoFar(cloudletFinished);
+					//cl.setCloudletFinishedSoFar(cloudletFinished);
 					double fileTransferTime = predictFileTransferTime(cl.getRequiredFiles());
 					vm.getCloudletScheduler().cloudletSubmit(cl, fileTransferTime);
 				}

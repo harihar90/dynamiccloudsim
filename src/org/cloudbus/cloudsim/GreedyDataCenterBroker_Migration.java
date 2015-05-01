@@ -276,7 +276,7 @@ public class GreedyDataCenterBroker_Migration extends GreedyDataCenterBroker {
 					{
 						cloudlet.setVmId(destVm);
 						double timeRan=CloudSim.clock()-cloudlet.getSubmissionTime();
-						cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
+						//cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
 						int[] array = {cloudlet.getCloudletId(), origVm1.getUserId(), origVm1.getId(), destVm, broker.getVmsToDatacentersMap().get(origVm1.getId()),(int) cloudlet.getCloudletFinishedSoFar()};
 						broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.CLOUDLET_MOVE, array);
 					}

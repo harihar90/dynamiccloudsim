@@ -53,7 +53,7 @@ public class Parameters {
 	// vm params
 	public static int nVms = 1;
 
-	public static int tVms = 2;// total number of vms created ( including those
+	public static int tVms = 3;// total number of vms created ( including those
 								// being destroyed)
 	public static int taskSlotsPerVm = 1;
 	public static double numberOfCusPerPe = 1;
@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 100;
+	public static int numberOfRuns = 1;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -86,7 +86,7 @@ public class Parameters {
 
 	// CPU Heterogeneity
 	public static Distribution cpuHeterogeneityDistribution = Distribution.NORMAL;
-	public static double cpuHeterogeneityCV = 0.4;
+	public static double cpuHeterogeneityCV = 0.1;
 	public static int cpuHeterogeneityAlpha = 0;
 	public static double cpuHeterogeneityBeta = 0d;
 	public static double cpuHeterogeneityShape = 0d;
@@ -335,7 +335,7 @@ public class Parameters {
 	public static final long RECHECK_LIMIT = 10000;
 
 
-	static Gaming game=Gaming.OPPORTUNISTIC;
+	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
 
 	
 
