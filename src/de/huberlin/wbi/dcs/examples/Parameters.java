@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 100;
+	public static int numberOfRuns = 1;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -209,7 +209,7 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = 53;
+	public static long seed = new Date().getTime();
 	public static Random numGen = new Random(seed);
 
 	public static ContinuousDistribution getDistribution(
