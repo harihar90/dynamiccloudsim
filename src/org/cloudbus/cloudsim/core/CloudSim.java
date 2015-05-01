@@ -466,7 +466,7 @@ public class CloudSim {
 		SimEntity ent;
 		boolean queue_empty;
 		int entities_size = entities.size();
-
+		
 		for (int i = 0; i < entities_size; i++) {
 			ent = entities.get(i);
 			if (ent.getState() == SimEntity.RUNNABLE) {
@@ -476,10 +476,13 @@ public class CloudSim {
 
 		// If there are more future events then deal with them
 		if (future.size() > 0) {
+			if(future.iterator().next().eventTime()>pauseAt && pauseAt!=-1)
+				return false;
 			List<SimEvent> toRemove = new ArrayList<SimEvent>();
 			Iterator<SimEvent> it = future.iterator();
 			queue_empty = false;
 			SimEvent first = it.next();
+			
 			processEvent(first);
 			future.remove(first);
 
@@ -710,6 +713,7 @@ public class CloudSim {
 		if (e.eventTime() < clock) {
 			throw new IllegalArgumentException("Past event detected.");
 		}
+		
 		clock = e.eventTime();
 
 		// Ok now process it
