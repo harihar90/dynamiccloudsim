@@ -90,9 +90,11 @@ public abstract class AbstractWorkflowScheduler extends DatacenterBroker
 		} else {
 			task.setScheduledToFail(false);
 		}
+		
 		sendNow(getVmsToDatacentersMap().get(vm.getId()),
 				CloudSimTags.CLOUDLET_SUBMIT, task);
 		this.cloudletList.add(task);
+		
 	}
 
 	private void submitSpeculativeTask(Task task, Vm vm) {

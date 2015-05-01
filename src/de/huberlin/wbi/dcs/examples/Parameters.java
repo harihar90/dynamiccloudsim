@@ -17,7 +17,7 @@ import de.huberlin.wbi.dcs.distributions.NormalDistribution;
 
 public class Parameters {
 
-	public static final double DELTA = 200;
+	public static final double DELTA = 100;
 	public static final int TIME_QUANTA = 3600;
 	public static final int recheck_interval = 100;
 	public static long STANDARD_MIPS_PER_CU = 1210;
@@ -30,14 +30,14 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nAMD2218HE = 1000;
+	public static int nAMD2218HE = 2;
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
 	public static int nXeon5507 = 2;
 	public static int nCusPerCoreXeon5507 = 2;
-	public static int nCoresXeon5507 = 4;
+	public static int nCoresXeon5507 = 2;
 	public static int mipsPerCoreXeon5507 = 2260;
 
 	public static int nXeonE5430 = 0;
@@ -53,7 +53,7 @@ public class Parameters {
 	// vm params
 	public static int nVms = 1;
 
-	public static int tVms = 3;// total number of vms created ( including those
+	public static int tVms = 2;// total number of vms created ( including those
 								// being destroyed)
 	public static int taskSlotsPerVm = 1;
 	public static double numberOfCusPerPe = 1;
@@ -78,7 +78,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 1;
+	public static int numberOfRuns = 100;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -335,7 +335,7 @@ public class Parameters {
 	public static final long RECHECK_LIMIT = 10000;
 
 
-	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
+	static Gaming game=Gaming.OFF;
 
 	
 
