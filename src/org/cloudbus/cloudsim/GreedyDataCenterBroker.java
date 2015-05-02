@@ -15,6 +15,7 @@ import org.cloudbus.cloudsim.core.SimEvent;
 import org.cloudbus.cloudsim.lists.VmList;
 
 import de.huberlin.wbi.dcs.DynamicHost;
+import de.huberlin.wbi.dcs.examples.Parameters;
 import de.huberlin.wbi.dcs.workflow.scheduler.AbstractWorkflowScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.C2O;
 import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
@@ -161,6 +162,7 @@ public class GreedyDataCenterBroker extends C2O {
 		}
 	} 
 	
+
 	
 
 	public Map<Integer, Integer> getVmHostMap() {

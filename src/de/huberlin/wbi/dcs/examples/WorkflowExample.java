@@ -19,6 +19,8 @@ import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.distributions.ContinuousDistribution;
 
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
+
 import de.huberlin.wbi.dcs.CloudletSchedulerGreedyDivided;
 import de.huberlin.wbi.dcs.DynamicHost;
 import de.huberlin.wbi.dcs.DynamicModel;
@@ -70,8 +72,15 @@ public class WorkflowExample {
 				// Start the simulation
 				CloudSim.startSimulation();
 				CloudSim.stopSimulation();
+				int firstUserID = users.get(0).getId();
+				int timeDiff = 0;
 				for(int j=0;j<Parameters.nUsers;j++){
-				totalRuntime[j] += users.get(j).getRuntime()/60;
+				int nthUser = (users.get(j).getId() - firstUserID);
+		
+				if(nthUser % Parameters.NUM_USERS_PER_DELAY == 0 && nthUser != 0) {
+					timeDiff += (Parameters.TIME_QUANTA * Parameters.TIME_INTERVAL_USERS);
+				}
+				totalRuntime[j] += (users.get(j).getRuntime() - timeDiff)/60;
 				double debt = (dc.getDebts().get(users.get(j).getId())==null)?0:dc.getDebts().get(users.get(j).getId());
 				if(debtMap.get(users.get(j).getId())==null)
 					debtMap.put(users.get(j).getId(), debt);
