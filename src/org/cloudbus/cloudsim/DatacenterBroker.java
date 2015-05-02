@@ -329,6 +329,7 @@ public class DatacenterBroker extends SimEntity {
 	 */
 	protected void createVmsInDatacenter(int datacenterId) {
 		// send as much vms as possible for this datacenter before trying the next one
+		
 		int requestedVms = 0;
 		String datacenterName = CloudSim.getEntityName(datacenterId);
 		for (Vm vm : getVmList()) {
@@ -337,13 +338,14 @@ public class DatacenterBroker extends SimEntity {
 						+ " in " + datacenterName);
 				send(datacenterId, createVMsInDataCenterCallCount * Parameters.TIME_INTERVAL_USERS * Parameters.TIME_QUANTA,
 					CloudSimTags.VM_CREATE_ACK, vm);
-				numOfUsersCreated++;
-				if(numOfUsersCreated % Parameters.NUM_USERS_PER_DELAY == 0)
-					createVMsInDataCenterCallCount++;
+				
+				
 				requestedVms++;
 			}
 		}
-
+		numOfUsersCreated++;
+		if(numOfUsersCreated % Parameters.NUM_USERS_PER_DELAY == 0 )
+			createVMsInDataCenterCallCount++;
 		getDatacenterRequestedIdsList().add(datacenterId);
 
 		setVmsRequested(requestedVms);
@@ -668,6 +670,12 @@ public class DatacenterBroker extends SimEntity {
 	 */
 	protected void setDatacenterRequestedIdsList(List<Integer> datacenterRequestedIdsList) {
 		this.datacenterRequestedIdsList = datacenterRequestedIdsList;
+	}
+
+	public static void clearCount() {
+		createVMsInDataCenterCallCount=0;
+		numOfUsersCreated=0;
+		
 	}
 
 }

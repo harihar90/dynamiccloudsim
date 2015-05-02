@@ -15,6 +15,10 @@ public class NormalDistribution implements ContinuousDistribution {
 	/** The dev. */
 	private final double dev;
 
+	private double max;
+
+	private double min;
+
 	public NormalDistribution(Random seed, double mean, double dev) {
 		if (dev < 0.0) {
 			throw new IllegalArgumentException("Deviation must be greater than 0.0");
@@ -23,6 +27,7 @@ public class NormalDistribution implements ContinuousDistribution {
 		numGen = seed;
 		this.mean = mean;
 		this.dev = dev;
+		
 	}
 
 	/**
@@ -43,7 +48,12 @@ public class NormalDistribution implements ContinuousDistribution {
 
 	@Override
 	public double sample() {
-		return numGen.nextGaussian() * dev + mean;
+		double result=0;
+		
+		result= numGen.nextGaussian() * dev + mean;
+		
+		return result;
+		
 	}
 
 }

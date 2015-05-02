@@ -32,13 +32,15 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
-	public static int nAMD2218HE = 100;
+
+	public static int nAMD2218HE = 1000;
+
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
 
-	public static int nXeon5507 = 100;
+	public static int nXeon5507 = 0;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 2;
 	public static int mipsPerCoreXeon5507 = 2260;
@@ -54,10 +56,11 @@ public class Parameters {
 	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
-	public static int nVms = 10;
 
-	public static int tVms = 20;// total number of vms created ( including those
-								// being destroyed)
+	public static int nVms = 5;
+
+	public static int tVms = 10;// total number of vms created ( including those
+	// being destroyed)
 	public static int taskSlotsPerVm = 1;
 	public static double numberOfCusPerPe = 1;
 	public static int numberOfPes = 1;
@@ -81,8 +84,7 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 1;
-
+	public static int numberOfRuns = 70;
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
 	}
@@ -212,7 +214,7 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = new Date().getTime();
+	public static long seed = 53;
 	public static Random numGen = new Random(seed);
 
 	public static ContinuousDistribution getDistribution(
@@ -334,11 +336,16 @@ public class Parameters {
 	}
 
 	public static Charging charging = Charging.NULL;
-	public static final int nUsers = 20;
+
+	public static final int nUsers = 1;
+	
+
 	public static final long RECHECK_LIMIT = 10000;
+	public static final double OPPORTUNISTIC_THRESHOLD = 1;
 
 
-	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
+	static Gaming game=Gaming.OFF;
+
 
 
 	

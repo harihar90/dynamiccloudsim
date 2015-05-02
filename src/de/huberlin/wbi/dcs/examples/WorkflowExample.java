@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 
 import org.cloudbus.cloudsim.Datacenter;
+import org.cloudbus.cloudsim.DatacenterBroker;
 import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker_Migration;
@@ -40,6 +41,7 @@ import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.HEFTScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.LATEScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.StaticRoundRobinScheduler;
+import edu.isi.pegasus.planner.client.ExitCode;
 
 public class WorkflowExample {
 
@@ -87,11 +89,14 @@ public class WorkflowExample {
 				else
 					debtMap.put(users.get(j).getId(), debt+debtMap.get(users.get(j).getId()));
 				users.get(j).clear();
+				
 			}
+				DatacenterBroker.clearCount();
+				
 			}
 			for(int j=0;j<Parameters.nUsers;j++){
 				
-				System.out.println("Run Time for user:"+j+":"+totalRuntime[j] /Parameters.numberOfRuns +" & debt:"+debtMap.get(j+3)/Parameters.numberOfRuns);
+				System.out.println(totalRuntime[j] /Parameters.numberOfRuns +","+debtMap.get(j+3)/Parameters.numberOfRuns);
 			}
 			
 			
@@ -133,7 +138,7 @@ public class WorkflowExample {
 				return new GreedyDataCenterBroker("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				
 				else if(Parameters.game==Parameters.Gaming.OPPORTUNISTIC)
-					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
+					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.OPPORTUNISTIC_THRESHOLD*Parameters.STANDARD_MIPS_PER_CU );
 				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
 					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
 				else
@@ -262,6 +267,7 @@ public class WorkflowExample {
 				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
 			//	mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
 			}
+			System.out.println(mips);
 			
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -329,6 +335,8 @@ public class WorkflowExample {
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
 			perfAverage+=mips/Parameters.nCusPerCoreXeon5507;
+			
+			
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}
