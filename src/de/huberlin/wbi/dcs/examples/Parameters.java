@@ -37,6 +37,7 @@ public class Parameters {
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
 
+
 	public static int nXeon5507 = 100;
 	public static int nCusPerCoreXeon5507 = 2;
 	public static int nCoresXeon5507 = 2;
@@ -211,7 +212,7 @@ public class Parameters {
 	// e.g., Task progress scores, HEFT runtime estimates
 	public static double distortionCV = 0d;
 
-	public static long seed = 53;
+	public static long seed = new Date().getTime();
 	public static Random numGen = new Random(seed);
 
 	public static ContinuousDistribution getDistribution(
@@ -338,6 +339,7 @@ public class Parameters {
 
 
 	static Gaming game=Gaming.BASIC_WITH_MIGRATION;
+
 
 	
 

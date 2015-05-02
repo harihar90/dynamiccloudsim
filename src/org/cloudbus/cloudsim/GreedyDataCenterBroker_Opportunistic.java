@@ -221,7 +221,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				for(Integer vmId:vmCloudletMap.keySet())
 				{
 					DynamicHost dynamicHost = (DynamicHost) broker.getVmPolicy().getVmTable().get(VmList.getById(getVmList(), vmId).getUserId()+"-"+vmId);
-					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null || (CloudSim.clock()-((DynamicVm)VmList.getById(broker.getVmList(),vmId)).getStartTime())%Parameters.TIME_QUANTA>(Parameters.TIME_QUANTA-Parameters.DELTA))
+					if(dynamicHost==null || broker.getVmsToDatacentersMap().get(vmId)==null || ((CloudSim.clock()-((DynamicVm)VmList.getById(broker.getVmList(),vmId)).getStartTime())%Parameters.TIME_QUANTA)<(Parameters.TIME_QUANTA-Parameters.DELTA))
 						continue;
 					double performance=(dynamicHost.getMipsPerPe()/dynamicHost.getNumberOfCusPerPe());
 					VmPerformanceData perf= new VmPerformanceData();
@@ -278,7 +278,7 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 					{
 						cloudlet.setVmId(vmDestId);
 						double timeRan=CloudSim.clock()-cloudlet.getSubmissionTime();
-						cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
+					//	cloudlet.setCloudletLength((long) (cloudlet.getCloudletLength()-timeRan*origVm1.getMips()));
 						int[] array = {cloudlet.getCloudletId(), origVm1.getUserId(), origVm1.getId(), vmDestId, broker.getVmsToDatacentersMap().get(origVm1.getId()),(int) cloudlet.getCloudletFinishedSoFar()};
 						broker.sendNow(broker.getVmsToDatacentersMap().get(origVm1.getId()), CloudSimTags.CLOUDLET_MOVE, array);
 					}
