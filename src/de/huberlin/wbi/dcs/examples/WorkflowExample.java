@@ -251,7 +251,7 @@ public class WorkflowExample {
 			long mips = 0;
 			while (mips <= 0) {
 				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
-			//	mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
+				//mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
 			}
 			
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {

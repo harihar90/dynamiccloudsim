@@ -44,6 +44,13 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 	public void setMipsThreshold(int mipsThreshold) {
 		this.mipsThreshold = mipsThreshold;
 	}
+	private Thread monitor;
+	
+	@Override
+	public void clear()
+	{
+		monitor.stop();
+	}
 	boolean monitorStarted=false;
 	@Override
 	/**
@@ -81,12 +88,12 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 
 				
 
-				Thread monitor=new Thread(new PerformanceMonitoringTask(this, threshold));
+				monitor=new Thread(new PerformanceMonitoringTask(this, threshold));
 				monitor.setPriority(Thread.MAX_PRIORITY);
 				monitor.start();
 				
 				
-				Thread.sleep(1000);
+				Thread.yield();
 				}
 			}
 			else{
@@ -187,16 +194,14 @@ public class GreedyDataCenterBroker_Opportunistic extends GreedyDataCenterBroker
 				while(j++ !=10000){
 					
 					CloudSim.pauseSimulation((j)*broker.getRecheckInterval());
-					
+			//		System.out.println("Paused @"+CloudSim.clock());
 					while (true) {
 						if (CloudSim.isPaused()) {
 							break;
 						}
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
+						
+							Thread.yield();
+						
 					}
 					
 				List<Task> cloudlets= broker.getCloudletList();
