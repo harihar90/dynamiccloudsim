@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 
 import org.cloudbus.cloudsim.Datacenter;
+import org.cloudbus.cloudsim.DatacenterBroker;
 import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker;
 import org.cloudbus.cloudsim.GreedyDataCenterBroker_Migration;
@@ -18,6 +19,8 @@ import org.cloudbus.cloudsim.Storage;
 import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.distributions.ContinuousDistribution;
+
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
 
 import de.huberlin.wbi.dcs.CloudletSchedulerGreedyDivided;
 import de.huberlin.wbi.dcs.DynamicHost;
@@ -38,6 +41,7 @@ import de.huberlin.wbi.dcs.workflow.scheduler.GreedyQueueScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.HEFTScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.LATEScheduler;
 import de.huberlin.wbi.dcs.workflow.scheduler.StaticRoundRobinScheduler;
+import edu.isi.pegasus.planner.client.ExitCode;
 
 public class WorkflowExample {
 
@@ -70,19 +74,29 @@ public class WorkflowExample {
 				// Start the simulation
 				CloudSim.startSimulation();
 				CloudSim.stopSimulation();
+				int firstUserID = users.get(0).getId();
+				int timeDiff = 0;
 				for(int j=0;j<Parameters.nUsers;j++){
-				totalRuntime[j] += users.get(j).getRuntime()/60;
+				int nthUser = (users.get(j).getId() - firstUserID);
+		
+				if(nthUser % Parameters.NUM_USERS_PER_DELAY == 0 && nthUser != 0) {
+					timeDiff += (Parameters.TIME_QUANTA * Parameters.TIME_INTERVAL_USERS);
+				}
+				totalRuntime[j] += (users.get(j).getRuntime() - timeDiff)/60;
 				double debt = (dc.getDebts().get(users.get(j).getId())==null)?0:dc.getDebts().get(users.get(j).getId());
 				if(debtMap.get(users.get(j).getId())==null)
 					debtMap.put(users.get(j).getId(), debt);
 				else
 					debtMap.put(users.get(j).getId(), debt+debtMap.get(users.get(j).getId()));
 				users.get(j).clear();
+				
 			}
+				DatacenterBroker.clearCount();
+				
 			}
 			for(int j=0;j<Parameters.nUsers;j++){
 				
-				System.out.println("Run Time for user:"+j+":"+totalRuntime[j] /Parameters.numberOfRuns +" & debt:"+debtMap.get(j+3)/Parameters.numberOfRuns);
+				System.out.println(totalRuntime[j] /Parameters.numberOfRuns +","+debtMap.get(j+3)/Parameters.numberOfRuns);
 			}
 			
 			
@@ -124,7 +138,7 @@ public class WorkflowExample {
 				return new GreedyDataCenterBroker("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i);
 				
 				else if(Parameters.game==Parameters.Gaming.OPPORTUNISTIC)
-					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
+					return new GreedyDataCenterBroker_Opportunistic("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.OPPORTUNISTIC_THRESHOLD*Parameters.STANDARD_MIPS_PER_CU );
 				else if(Parameters.game==Parameters.Gaming.BASIC_WITH_MIGRATION)
 					return new GreedyDataCenterBroker_Migration("C2O",vmPolicy[i],Parameters.tVms,Parameters.nVms, Parameters.taskSlotsPerVm, i, Parameters.recheck_interval, 0,Parameters.STANDARD_MIPS_PER_CU );
 				else
@@ -253,6 +267,7 @@ public class WorkflowExample {
 				mips = (long) (long) (dist.sample() * Parameters.mipsPerCoreAMD2218HE);
 				//mips = (long) (long) (Parameters.mipsPerCoreAMD2218HE);
 			}
+			//System.out.println(mips);
 			
 			if (numGen.nextDouble() < Parameters.likelihoodOfStraggler) {
 				bwps *= Parameters.stragglerPerformanceCoefficient;
@@ -320,6 +335,8 @@ public class WorkflowExample {
 				mips *= Parameters.stragglerPerformanceCoefficient;
 			}
 			perfAverage+=mips/Parameters.nCusPerCoreXeon5507;
+			
+			
 			hostList.add(new DynamicHost(hostId++, ram, bwps, iops, storage,
 					Parameters.nCusPerCoreXeon5507, Parameters.nCoresXeon5507, mips));
 		}

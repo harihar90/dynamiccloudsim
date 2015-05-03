@@ -17429,3 +17429,779 @@ Run Time for user:0:13.95406714977682 & debt:23.349999999999955
 Total Workload: 100000000mi 0io 0bw
 Total VM Performance: 121116mips 2081699iops 26341bwps
 minimum minutes (quotient): 13 0 0
+
+OPPORTUNISTIC 20Users
+
+Initialising...
+Average Performance:1219
+Starting CloudSim version 3.0
+Datacenter0 is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+C2O is starting...
+Entities started.
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Cloud Resource List received with 1 resource(s)
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.0: C2O: Trying to Create VM #0 in Datacenter0
+0.0: C2O: Trying to Create VM #1 in Datacenter0
+0.0: C2O: Trying to Create VM #2 in Datacenter0
+0.0: C2O: Trying to Create VM #3 in Datacenter0
+0.0: C2O: Trying to Create VM #4 in Datacenter0
+0.0: C2O: Trying to Create VM #5 in Datacenter0
+0.0: C2O: Trying to Create VM #6 in Datacenter0
+0.0: C2O: Trying to Create VM #7 in Datacenter0
+0.0: C2O: Trying to Create VM #8 in Datacenter0
+0.0: C2O: Trying to Create VM #9 in Datacenter0
+0.1: C2O: VM #0 has been created in Datacenter #2, Host #159 with mips:2274
+3600.1: C2O: VM #1 has been created in Datacenter #2, Host #188 with mips:2507
+7200.1: C2O: VM #2 has been created in Datacenter #2, Host #150 with mips:2173
+10800.1: C2O: VM #3 has been created in Datacenter #2, Host #120 with mips:1937
+14400.1: C2O: VM #4 has been created in Datacenter #2, Host #198 with mips:2213
+18000.1: C2O: VM #5 has been created in Datacenter #2, Host #193 with mips:2170
+21600.1: C2O: VM #6 has been created in Datacenter #2, Host #34 with mips:2480
+25200.1: C2O: VM #7 has been created in Datacenter #2, Host #11 with mips:2281
+28800.1: C2O: VM #8 has been created in Datacenter #2, Host #59 with mips:2328
+32400.1: C2O: VM #9 has been created in Datacenter #2, Host #124 with mips:2395
+32400.1: C2O: VM # 0 starts executing Task # 0 "  "
+36000.1: C2O: VM #0 has been created in Datacenter #2, Host #161 with mips:1771
+39600.1: C2O: VM #1 has been created in Datacenter #2, Host #20 with mips:3157
+43200.1: C2O: VM #2 has been created in Datacenter #2, Host #69 with mips:2469
+46800.1: C2O: VM #3 has been created in Datacenter #2, Host #189 with mips:2572
+50400.1: C2O: VM #4 has been created in Datacenter #2, Host #82 with mips:2642
+54000.1: C2O: VM #5 has been created in Datacenter #2, Host #144 with mips:2318
+57600.1: C2O: VM #6 has been created in Datacenter #2, Host #50 with mips:2644
+61200.1: C2O: VM #7 has been created in Datacenter #2, Host #3 with mips:2600
+64800.1: C2O: VM #8 has been created in Datacenter #2, Host #81 with mips:3191
+68400.1: C2O: VM #9 has been created in Datacenter #2, Host #172 with mips:2374
+68400.1: C2O: VM # 0 starts executing Task # 1 "  "
+72000.1: C2O: VM #0 has been created in Datacenter #2, Host #7 with mips:2677
+75600.1: C2O: VM #1 has been created in Datacenter #2, Host #119 with mips:1873
+79200.1: C2O: VM #2 has been created in Datacenter #2, Host #137 with mips:2366
+82800.1: C2O: VM #3 has been created in Datacenter #2, Host #48 with mips:3097
+86400.1: C2O: VM #4 has been created in Datacenter #2, Host #154 with mips:1938
+90000.1: C2O: VM #5 has been created in Datacenter #2, Host #104 with mips:1682
+93600.1: C2O: VM #6 has been created in Datacenter #2, Host #103 with mips:2068
+97200.1: C2O: VM #7 has been created in Datacenter #2, Host #48 with mips:3097
+100800.1: C2O: VM #8 has been created in Datacenter #2, Host #58 with mips:2264
+104400.1: C2O: VM #9 has been created in Datacenter #2, Host #110 with mips:2531
+104400.1: C2O: VM # 0 starts executing Task # 2 "  "
+108000.1: C2O: VM #0 has been created in Datacenter #2, Host #36 with mips:2602
+111600.1: C2O: VM #1 has been created in Datacenter #2, Host #39 with mips:2696
+115200.1: C2O: VM #2 has been created in Datacenter #2, Host #54 with mips:3300
+118800.1: C2O: VM #3 has been created in Datacenter #2, Host #14 with mips:2908
+122400.1: C2O: VM #4 has been created in Datacenter #2, Host #30 with mips:2804
+126000.1: C2O: VM #5 has been created in Datacenter #2, Host #196 with mips:2688
+129600.1: C2O: VM #6 has been created in Datacenter #2, Host #38 with mips:2953
+133200.1: C2O: VM #7 has been created in Datacenter #2, Host #84 with mips:2530
+136800.1: C2O: VM #8 has been created in Datacenter #2, Host #197 with mips:2165
+140400.1: C2O: VM #9 has been created in Datacenter #2, Host #153 with mips:2430
+140400.1: C2O: VM # 0 starts executing Task # 3 "  "
+144000.1: C2O: VM #0 has been created in Datacenter #2, Host #199 with mips:2313
+147600.1: C2O: VM #1 has been created in Datacenter #2, Host #93 with mips:2631
+151200.1: C2O: VM #2 has been created in Datacenter #2, Host #172 with mips:2374
+154800.1: C2O: VM #3 has been created in Datacenter #2, Host #87 with mips:2883
+158400.1: C2O: VM #4 has been created in Datacenter #2, Host #15 with mips:2624
+162000.1: C2O: VM #5 has been created in Datacenter #2, Host #106 with mips:2147
+165600.1: C2O: VM #6 has been created in Datacenter #2, Host #8 with mips:2563
+169200.1: C2O: VM #7 has been created in Datacenter #2, Host #119 with mips:1873
+172800.1: C2O: VM #8 has been created in Datacenter #2, Host #74 with mips:2863
+176400.1: C2O: VM #9 has been created in Datacenter #2, Host #113 with mips:2385
+176400.1: C2O: VM # 0 starts executing Task # 4 "  "
+180000.1: C2O: VM #0 has been created in Datacenter #2, Host #61 with mips:2245
+183600.1: C2O: VM #1 has been created in Datacenter #2, Host #179 with mips:2733
+187200.1: C2O: VM #2 has been created in Datacenter #2, Host #165 with mips:2401
+190800.1: C2O: VM #3 has been created in Datacenter #2, Host #83 with mips:1848
+194400.1: C2O: VM #4 has been created in Datacenter #2, Host #42 with mips:2569
+198000.1: C2O: VM #5 has been created in Datacenter #2, Host #32 with mips:2852
+201600.1: C2O: VM #6 has been created in Datacenter #2, Host #197 with mips:2165
+205200.1: C2O: VM #7 has been created in Datacenter #2, Host #30 with mips:2804
+208800.1: C2O: VM #8 has been created in Datacenter #2, Host #69 with mips:2469
+212400.1: C2O: VM #9 has been created in Datacenter #2, Host #116 with mips:2608
+212400.1: C2O: VM # 0 starts executing Task # 5 "  "
+216000.1: C2O: VM #0 has been created in Datacenter #2, Host #89 with mips:2499
+219600.1: C2O: VM #1 has been created in Datacenter #2, Host #60 with mips:2659
+223200.1: C2O: VM #2 has been created in Datacenter #2, Host #182 with mips:2119
+226800.1: C2O: VM #3 has been created in Datacenter #2, Host #96 with mips:2447
+230400.1: C2O: VM #4 has been created in Datacenter #2, Host #135 with mips:2518
+234000.1: C2O: VM #5 has been created in Datacenter #2, Host #16 with mips:2658
+237600.1: C2O: VM #6 has been created in Datacenter #2, Host #2 with mips:2799
+241200.1: C2O: VM #7 has been created in Datacenter #2, Host #86 with mips:2543
+244800.1: C2O: VM #8 has been created in Datacenter #2, Host #41 with mips:2567
+248400.1: C2O: VM #9 has been created in Datacenter #2, Host #8 with mips:2563
+248400.1: C2O: VM # 0 starts executing Task # 6 "  "
+252000.1: C2O: VM #0 has been created in Datacenter #2, Host #63 with mips:3042
+255600.1: C2O: VM #1 has been created in Datacenter #2, Host #71 with mips:2456
+259200.1: C2O: VM #2 has been created in Datacenter #2, Host #165 with mips:2401
+262800.1: C2O: VM #3 has been created in Datacenter #2, Host #76 with mips:2364
+266400.1: C2O: VM #4 has been created in Datacenter #2, Host #159 with mips:2274
+270000.1: C2O: VM #5 has been created in Datacenter #2, Host #83 with mips:1848
+273600.1: C2O: VM #6 has been created in Datacenter #2, Host #191 with mips:2393
+277200.1: C2O: VM #7 has been created in Datacenter #2, Host #85 with mips:2427
+280800.1: C2O: VM #8 has been created in Datacenter #2, Host #151 with mips:2279
+284400.1: C2O: VM #9 has been created in Datacenter #2, Host #102 with mips:2243
+284400.1: C2O: VM # 0 starts executing Task # 7 "  "
+288000.1: C2O: VM #0 has been created in Datacenter #2, Host #134 with mips:2143
+291600.1: C2O: VM #1 has been created in Datacenter #2, Host #2 with mips:2799
+295200.1: C2O: VM #2 has been created in Datacenter #2, Host #92 with mips:2615
+298800.1: C2O: VM #3 has been created in Datacenter #2, Host #176 with mips:2491
+302400.1: C2O: VM #4 has been created in Datacenter #2, Host #141 with mips:2721
+306000.1: C2O: VM #5 has been created in Datacenter #2, Host #24 with mips:2472
+309600.1: C2O: VM #6 has been created in Datacenter #2, Host #178 with mips:2169
+313200.1: C2O: VM #7 has been created in Datacenter #2, Host #170 with mips:2173
+316800.1: C2O: VM #8 has been created in Datacenter #2, Host #21 with mips:2856
+320400.1: C2O: VM #9 has been created in Datacenter #2, Host #114 with mips:2431
+320400.1: C2O: VM # 0 starts executing Task # 8 "  "
+324000.1: C2O: VM #0 has been created in Datacenter #2, Host #115 with mips:2380
+327600.1: C2O: VM #1 has been created in Datacenter #2, Host #131 with mips:2252
+331200.1: C2O: VM #2 has been created in Datacenter #2, Host #41 with mips:2567
+334800.1: C2O: VM #3 has been created in Datacenter #2, Host #10 with mips:2511
+338400.1: C2O: VM #4 has been created in Datacenter #2, Host #80 with mips:2104
+342000.1: C2O: VM #5 has been created in Datacenter #2, Host #166 with mips:2167
+345600.1: C2O: VM #6 has been created in Datacenter #2, Host #34 with mips:2480
+349200.1: C2O: VM #7 has been created in Datacenter #2, Host #190 with mips:2135
+352800.1: C2O: VM #8 has been created in Datacenter #2, Host #62 with mips:2795
+356400.1: C2O: VM #9 has been created in Datacenter #2, Host #0 with mips:2615
+356400.1: C2O: VM # 0 starts executing Task # 9 "  "
+360000.1: C2O: VM #0 has been created in Datacenter #2, Host #147 with mips:1922
+363600.1: C2O: VM #1 has been created in Datacenter #2, Host #70 with mips:2359
+367200.1: C2O: VM #2 has been created in Datacenter #2, Host #15 with mips:2624
+370800.1: C2O: VM #3 has been created in Datacenter #2, Host #66 with mips:2545
+374400.1: C2O: VM #4 has been created in Datacenter #2, Host #157 with mips:2076
+378000.1: C2O: VM #5 has been created in Datacenter #2, Host #104 with mips:1682
+381600.1: C2O: VM #6 has been created in Datacenter #2, Host #88 with mips:2284
+385200.1: C2O: VM #7 has been created in Datacenter #2, Host #10 with mips:2511
+388800.1: C2O: VM #8 has been created in Datacenter #2, Host #105 with mips:2182
+392400.1: C2O: VM #9 has been created in Datacenter #2, Host #7 with mips:2677
+392400.1: C2O: VM # 0 starts executing Task # 10 "  "
+396000.1: C2O: VM #0 has been created in Datacenter #2, Host #97 with mips:2388
+399600.1: C2O: VM #1 has been created in Datacenter #2, Host #98 with mips:2256
+403200.1: C2O: VM #2 has been created in Datacenter #2, Host #96 with mips:2447
+406800.1: C2O: VM #3 has been created in Datacenter #2, Host #144 with mips:2318
+410400.1: C2O: VM #4 has been created in Datacenter #2, Host #101 with mips:2452
+414000.1: C2O: VM #5 has been created in Datacenter #2, Host #94 with mips:2479
+417600.1: C2O: VM #6 has been created in Datacenter #2, Host #49 with mips:2760
+421200.1: C2O: VM #7 has been created in Datacenter #2, Host #116 with mips:2608
+424800.1: C2O: VM #8 has been created in Datacenter #2, Host #138 with mips:2231
+428400.1: C2O: VM #9 has been created in Datacenter #2, Host #18 with mips:2997
+428400.1: C2O: VM # 0 starts executing Task # 11 "  "
+432000.1: C2O: VM #0 has been created in Datacenter #2, Host #6 with mips:3166
+435600.1: C2O: VM #1 has been created in Datacenter #2, Host #123 with mips:2323
+439200.1: C2O: VM #2 has been created in Datacenter #2, Host #26 with mips:2424
+442800.1: C2O: VM #3 has been created in Datacenter #2, Host #103 with mips:2068
+446400.1: C2O: VM #4 has been created in Datacenter #2, Host #75 with mips:2408
+450000.1: C2O: VM #5 has been created in Datacenter #2, Host #185 with mips:2263
+453600.1: C2O: VM #6 has been created in Datacenter #2, Host #42 with mips:2569
+457200.1: C2O: VM #7 has been created in Datacenter #2, Host #193 with mips:2170
+460800.1: C2O: VM #8 has been created in Datacenter #2, Host #132 with mips:2183
+464400.1: C2O: VM #9 has been created in Datacenter #2, Host #82 with mips:2642
+464400.1: C2O: VM # 0 starts executing Task # 12 "  "
+468000.1: C2O: VM #0 has been created in Datacenter #2, Host #67 with mips:2326
+471600.1: C2O: VM #1 has been created in Datacenter #2, Host #13 with mips:2610
+475200.1: C2O: VM #2 has been created in Datacenter #2, Host #134 with mips:2143
+478800.1: C2O: VM #3 has been created in Datacenter #2, Host #156 with mips:2147
+482400.1: C2O: VM #4 has been created in Datacenter #2, Host #194 with mips:2415
+486000.1: C2O: VM #5 has been created in Datacenter #2, Host #143 with mips:2093
+489600.1: C2O: VM #6 has been created in Datacenter #2, Host #87 with mips:2883
+493200.1: C2O: VM #7 has been created in Datacenter #2, Host #18 with mips:2997
+496800.1: C2O: VM #8 has been created in Datacenter #2, Host #35 with mips:2871
+500400.1: C2O: VM #9 has been created in Datacenter #2, Host #156 with mips:2147
+500400.1: C2O: VM # 0 starts executing Task # 13 "  "
+504000.1: C2O: VM #0 has been created in Datacenter #2, Host #49 with mips:2760
+507600.1: C2O: VM #1 has been created in Datacenter #2, Host #169 with mips:2014
+511200.1: C2O: VM #2 has been created in Datacenter #2, Host #64 with mips:2965
+514800.1: C2O: VM #3 has been created in Datacenter #2, Host #44 with mips:2702
+518400.1: C2O: VM #4 has been created in Datacenter #2, Host #149 with mips:2216
+522000.1: C2O: VM #5 has been created in Datacenter #2, Host #31 with mips:2838
+525600.1: C2O: VM #6 has been created in Datacenter #2, Host #98 with mips:2256
+529200.1: C2O: VM #7 has been created in Datacenter #2, Host #40 with mips:2902
+532800.1: C2O: VM #8 has been created in Datacenter #2, Host #173 with mips:2392
+536400.1: C2O: VM #9 has been created in Datacenter #2, Host #46 with mips:2708
+536400.1: C2O: VM # 0 starts executing Task # 14 "  "
+540000.1: C2O: VM #0 has been created in Datacenter #2, Host #126 with mips:2250
+543600.1: C2O: VM #1 has been created in Datacenter #2, Host #170 with mips:2173
+547200.1: C2O: VM #2 has been created in Datacenter #2, Host #142 with mips:2422
+550800.1: C2O: VM #3 has been created in Datacenter #2, Host #33 with mips:2687
+554400.1: C2O: VM #4 has been created in Datacenter #2, Host #65 with mips:3001
+558000.1: C2O: VM #5 has been created in Datacenter #2, Host #160 with mips:2507
+561600.1: C2O: VM #6 has been created in Datacenter #2, Host #109 with mips:2623
+565200.1: C2O: VM #7 has been created in Datacenter #2, Host #6 with mips:3166
+568800.1: C2O: VM #8 has been created in Datacenter #2, Host #164 with mips:2415
+572400.1: C2O: VM #9 has been created in Datacenter #2, Host #19 with mips:2470
+572400.1: C2O: VM # 0 starts executing Task # 15 "  "
+576000.1: C2O: VM #0 has been created in Datacenter #2, Host #115 with mips:2380
+579600.1: C2O: VM #1 has been created in Datacenter #2, Host #74 with mips:2863
+583200.1: C2O: VM #2 has been created in Datacenter #2, Host #66 with mips:2545
+586800.1: C2O: VM #3 has been created in Datacenter #2, Host #25 with mips:2508
+590400.1: C2O: VM #4 has been created in Datacenter #2, Host #29 with mips:2823
+594000.1: C2O: VM #5 has been created in Datacenter #2, Host #189 with mips:2572
+597600.1: C2O: VM #6 has been created in Datacenter #2, Host #163 with mips:2264
+601200.1: C2O: VM #7 has been created in Datacenter #2, Host #139 with mips:2451
+604800.1: C2O: VM #8 has been created in Datacenter #2, Host #112 with mips:1868
+608400.1: C2O: VM #9 has been created in Datacenter #2, Host #27 with mips:2288
+608400.1: C2O: VM # 0 starts executing Task # 16 "  "
+612000.1: C2O: VM #0 has been created in Datacenter #2, Host #76 with mips:2364
+615600.1: C2O: VM #1 has been created in Datacenter #2, Host #147 with mips:1922
+619200.1: C2O: VM #2 has been created in Datacenter #2, Host #59 with mips:2328
+622800.1: C2O: VM #3 has been created in Datacenter #2, Host #188 with mips:2507
+626400.1: C2O: VM #4 has been created in Datacenter #2, Host #17 with mips:2476
+630000.1: C2O: VM #5 has been created in Datacenter #2, Host #186 with mips:2305
+633600.1: C2O: VM #6 has been created in Datacenter #2, Host #92 with mips:2615
+637200.1: C2O: VM #7 has been created in Datacenter #2, Host #22 with mips:2379
+640800.1: C2O: VM #8 has been created in Datacenter #2, Host #149 with mips:2216
+644400.1: C2O: VM #9 has been created in Datacenter #2, Host #141 with mips:2721
+644400.1: C2O: VM # 0 starts executing Task # 17 "  "
+648000.1: C2O: VM #0 has been created in Datacenter #2, Host #158 with mips:2255
+651600.1: C2O: VM #1 has been created in Datacenter #2, Host #105 with mips:2182
+655200.1: C2O: VM #2 has been created in Datacenter #2, Host #180 with mips:2283
+658800.1: C2O: VM #3 has been created in Datacenter #2, Host #140 with mips:2211
+662400.1: C2O: VM #4 has been created in Datacenter #2, Host #63 with mips:3042
+666000.1: C2O: VM #5 has been created in Datacenter #2, Host #0 with mips:2615
+669600.1: C2O: VM #6 has been created in Datacenter #2, Host #77 with mips:2608
+673200.1: C2O: VM #7 has been created in Datacenter #2, Host #146 with mips:2076
+676800.1: C2O: VM #8 has been created in Datacenter #2, Host #174 with mips:1973
+680400.1: C2O: VM #9 has been created in Datacenter #2, Host #140 with mips:2211
+680400.1: C2O: VM # 0 starts executing Task # 18 "  "
+684000.1: C2O: VM #0 has been created in Datacenter #2, Host #90 with mips:2863
+687600.1: C2O: VM #1 has been created in Datacenter #2, Host #80 with mips:2104
+691200.1: C2O: VM #2 has been created in Datacenter #2, Host #100 with mips:2236
+694800.1: C2O: VM #3 has been created in Datacenter #2, Host #192 with mips:1848
+698400.1: C2O: VM #4 has been created in Datacenter #2, Host #79 with mips:2858
+702000.1: C2O: VM #5 has been created in Datacenter #2, Host #33 with mips:2687
+705600.1: C2O: VM #6 has been created in Datacenter #2, Host #13 with mips:2610
+709200.1: C2O: VM #7 has been created in Datacenter #2, Host #146 with mips:2076
+712800.1: C2O: VM #8 has been created in Datacenter #2, Host #37 with mips:2297
+716400.1: C2O: VM #9 has been created in Datacenter #2, Host #145 with mips:2474
+716400.1: C2O: VM # 0 starts executing Task # 19 "  "
+851505.0682480389: C2O: VM # 0 completed Task # 2 "  "
+851505.0682480389: C2O: All Tasks executed. Finishing...
+851505.0682480389: C2O: Destroying VM #0
+851505.0682480389: C2O: Destroying VM #1
+851505.0682480389: C2O: Destroying VM #2
+851505.0682480389: C2O: Destroying VM #3
+851505.0682480389: C2O: Destroying VM #4
+851505.0682480389: C2O: Destroying VM #5
+851505.0682480389: C2O: Destroying VM #6
+851505.0682480389: C2O: Destroying VM #7
+851505.0682480389: C2O: Destroying VM #8
+851505.0682480389: C2O: Destroying VM #9
+C2O is shutting down...
+909039.6078329736: C2O: VM # 0 completed Task # 3 "  "
+909039.6078329736: C2O: All Tasks executed. Finishing...
+909039.6078329736: C2O: Destroying VM #0
+909039.6078329736: C2O: Destroying VM #1
+909039.6078329736: C2O: Destroying VM #2
+909039.6078329736: C2O: Destroying VM #3
+909039.6078329736: C2O: Destroying VM #4
+909039.6078329736: C2O: Destroying VM #5
+909039.6078329736: C2O: Destroying VM #6
+909039.6078329736: C2O: Destroying VM #7
+909039.6078329736: C2O: Destroying VM #8
+909039.6078329736: C2O: Destroying VM #9
+C2O is shutting down...
+911907.5752911969: C2O: VM # 0 completed Task # 0 "  "
+911907.5752911969: C2O: All Tasks executed. Finishing...
+911907.5752911969: C2O: Destroying VM #0
+911907.5752911969: C2O: Destroying VM #1
+911907.5752911969: C2O: Destroying VM #2
+911907.5752911969: C2O: Destroying VM #3
+911907.5752911969: C2O: Destroying VM #4
+911907.5752911969: C2O: Destroying VM #5
+911907.5752911969: C2O: Destroying VM #6
+911907.5752911969: C2O: Destroying VM #7
+911907.5752911969: C2O: Destroying VM #8
+911907.5752911969: C2O: Destroying VM #9
+C2O is shutting down...
+941862.2958697637: C2O: VM # 0 completed Task # 7 "  "
+941862.2958697637: C2O: All Tasks executed. Finishing...
+941862.2958697637: C2O: Destroying VM #0
+941862.2958697637: C2O: Destroying VM #1
+941862.2958697637: C2O: Destroying VM #2
+941862.2958697637: C2O: Destroying VM #3
+941862.2958697637: C2O: Destroying VM #4
+941862.2958697637: C2O: Destroying VM #5
+941862.2958697637: C2O: Destroying VM #6
+941862.2958697637: C2O: Destroying VM #7
+941862.2958697637: C2O: Destroying VM #8
+941862.2958697637: C2O: Destroying VM #9
+C2O is shutting down...
+1041078.0070673426: C2O: VM # 0 completed Task # 4 "  "
+1041078.0070673426: C2O: All Tasks executed. Finishing...
+1041078.0070673426: C2O: Destroying VM #0
+1041078.0070673426: C2O: Destroying VM #1
+1041078.0070673426: C2O: Destroying VM #2
+1041078.0070673426: C2O: Destroying VM #3
+1041078.0070673426: C2O: Destroying VM #4
+1041078.0070673426: C2O: Destroying VM #5
+1041078.0070673426: C2O: Destroying VM #6
+1041078.0070673426: C2O: Destroying VM #7
+1041078.0070673426: C2O: Destroying VM #8
+1041078.0070673426: C2O: Destroying VM #9
+C2O is shutting down...
+1048720.227955698: C2O: VM # 0 completed Task # 6 "  "
+1048720.227955698: C2O: All Tasks executed. Finishing...
+1048720.227955698: C2O: Destroying VM #0
+1048720.227955698: C2O: Destroying VM #1
+1048720.227955698: C2O: Destroying VM #2
+1048720.227955698: C2O: Destroying VM #3
+1048720.227955698: C2O: Destroying VM #4
+1048720.227955698: C2O: Destroying VM #5
+1048720.227955698: C2O: Destroying VM #6
+1048720.227955698: C2O: Destroying VM #7
+1048720.227955698: C2O: Destroying VM #8
+1048720.227955698: C2O: Destroying VM #9
+C2O is shutting down...
+1096112.0390738281: C2O: VM # 0 completed Task # 12 "  "
+1096112.0390738281: C2O: All Tasks executed. Finishing...
+1096112.0390738281: C2O: Destroying VM #0
+1096112.0390738281: C2O: Destroying VM #1
+1096112.0390738281: C2O: Destroying VM #2
+1096112.0390738281: C2O: Destroying VM #3
+1096112.0390738281: C2O: Destroying VM #4
+1096112.0390738281: C2O: Destroying VM #5
+1096112.0390738281: C2O: Destroying VM #6
+1096112.0390738281: C2O: Destroying VM #7
+1096112.0390738281: C2O: Destroying VM #8
+1096112.0390738281: C2O: Destroying VM #9
+C2O is shutting down...
+1103268.6965348527: C2O: VM # 0 completed Task # 5 "  "
+1103268.6965348527: C2O: All Tasks executed. Finishing...
+1103268.6965348527: C2O: Destroying VM #0
+1103268.6965348527: C2O: Destroying VM #1
+1103268.6965348527: C2O: Destroying VM #2
+1103268.6965348527: C2O: Destroying VM #3
+1103268.6965348527: C2O: Destroying VM #4
+1103268.6965348527: C2O: Destroying VM #5
+1103268.6965348527: C2O: Destroying VM #6
+1103268.6965348527: C2O: Destroying VM #7
+1103268.6965348527: C2O: Destroying VM #8
+1103268.6965348527: C2O: Destroying VM #9
+C2O is shutting down...
+1196736.2343499789: C2O: VM # 0 completed Task # 9 "  "
+1196736.2343499789: C2O: All Tasks executed. Finishing...
+1196736.2343499789: C2O: Destroying VM #0
+1196736.2343499789: C2O: Destroying VM #1
+1196736.2343499789: C2O: Destroying VM #2
+1196736.2343499789: C2O: Destroying VM #3
+1196736.2343499789: C2O: Destroying VM #4
+1196736.2343499789: C2O: Destroying VM #5
+1196736.2343499789: C2O: Destroying VM #6
+1196736.2343499789: C2O: Destroying VM #7
+1196736.2343499789: C2O: Destroying VM #8
+1196736.2343499789: C2O: Destroying VM #9
+C2O is shutting down...
+1197705.5770941912: C2O: VM # 0 completed Task # 1 "  "
+1197705.5770941912: C2O: All Tasks executed. Finishing...
+1197705.5770941912: C2O: Destroying VM #0
+1197705.5770941912: C2O: Destroying VM #1
+1197705.5770941912: C2O: Destroying VM #2
+1197705.5770941912: C2O: Destroying VM #3
+1197705.5770941912: C2O: Destroying VM #4
+1197705.5770941912: C2O: Destroying VM #5
+1197705.5770941912: C2O: Destroying VM #6
+1197705.5770941912: C2O: Destroying VM #7
+1197705.5770941912: C2O: Destroying VM #8
+1197705.5770941912: C2O: Destroying VM #9
+C2O is shutting down...
+1253671.2149849986: C2O: VM # 0 completed Task # 8 "  "
+1253671.2149849986: C2O: All Tasks executed. Finishing...
+1253671.2149849986: C2O: Destroying VM #0
+1253671.2149849986: C2O: Destroying VM #1
+1253671.2149849986: C2O: Destroying VM #2
+1253671.2149849986: C2O: Destroying VM #3
+1253671.2149849986: C2O: Destroying VM #4
+1253671.2149849986: C2O: Destroying VM #5
+1253671.2149849986: C2O: Destroying VM #6
+1253671.2149849986: C2O: Destroying VM #7
+1253671.2149849986: C2O: Destroying VM #8
+1253671.2149849986: C2O: Destroying VM #9
+C2O is shutting down...
+1261037.7809270276: C2O: VM # 0 completed Task # 14 "  "
+1261037.7809270276: C2O: All Tasks executed. Finishing...
+1261037.7809270276: C2O: Destroying VM #0
+1261037.7809270276: C2O: Destroying VM #1
+1261037.7809270276: C2O: Destroying VM #2
+1261037.7809270276: C2O: Destroying VM #3
+1261037.7809270276: C2O: Destroying VM #4
+1261037.7809270276: C2O: Destroying VM #5
+1261037.7809270276: C2O: Destroying VM #6
+1261037.7809270276: C2O: Destroying VM #7
+1261037.7809270276: C2O: Destroying VM #8
+1261037.7809270276: C2O: Destroying VM #9
+C2O is shutting down...
+1265921.0372084347: C2O: VM # 0 completed Task # 11 "  "
+1265921.0372084347: C2O: All Tasks executed. Finishing...
+1265921.0372084347: C2O: Destroying VM #0
+1265921.0372084347: C2O: Destroying VM #1
+1265921.0372084347: C2O: Destroying VM #2
+1265921.0372084347: C2O: Destroying VM #3
+1265921.0372084347: C2O: Destroying VM #4
+1265921.0372084347: C2O: Destroying VM #5
+1265921.0372084347: C2O: Destroying VM #6
+1265921.0372084347: C2O: Destroying VM #7
+1265921.0372084347: C2O: Destroying VM #8
+1265921.0372084347: C2O: Destroying VM #9
+C2O is shutting down...
+1360245.3278361217: C2O: VM # 0 completed Task # 13 "  "
+1360245.3278361217: C2O: All Tasks executed. Finishing...
+1360245.3278361217: C2O: Destroying VM #0
+1360245.3278361217: C2O: Destroying VM #1
+1360245.3278361217: C2O: Destroying VM #2
+1360245.3278361217: C2O: Destroying VM #3
+1360245.3278361217: C2O: Destroying VM #4
+1360245.3278361217: C2O: Destroying VM #5
+1360245.3278361217: C2O: Destroying VM #6
+1360245.3278361217: C2O: Destroying VM #7
+1360245.3278361217: C2O: Destroying VM #8
+1360245.3278361217: C2O: Destroying VM #9
+C2O is shutting down...
+1414968.0354854406: C2O: VM # 0 completed Task # 19 "  "
+1414968.0354854406: C2O: All Tasks executed. Finishing...
+1414968.0354854406: C2O: Destroying VM #0
+1414968.0354854406: C2O: Destroying VM #1
+1414968.0354854406: C2O: Destroying VM #2
+1414968.0354854406: C2O: Destroying VM #3
+1414968.0354854406: C2O: Destroying VM #4
+1414968.0354854406: C2O: Destroying VM #5
+1414968.0354854406: C2O: Destroying VM #6
+1414968.0354854406: C2O: Destroying VM #7
+1414968.0354854406: C2O: Destroying VM #8
+1414968.0354854406: C2O: Destroying VM #9
+C2O is shutting down...
+1432982.82528773: C2O: VM # 0 completed Task # 10 "  "
+1432982.82528773: C2O: All Tasks executed. Finishing...
+1432982.82528773: C2O: Destroying VM #0
+1432982.82528773: C2O: Destroying VM #1
+1432982.82528773: C2O: Destroying VM #2
+1432982.82528773: C2O: Destroying VM #3
+1432982.82528773: C2O: Destroying VM #4
+1432982.82528773: C2O: Destroying VM #5
+1432982.82528773: C2O: Destroying VM #6
+1432982.82528773: C2O: Destroying VM #7
+1432982.82528773: C2O: Destroying VM #8
+1432982.82528773: C2O: Destroying VM #9
+C2O is shutting down...
+1448736.2336910914: C2O: VM # 0 completed Task # 16 "  "
+1448736.2336910914: C2O: All Tasks executed. Finishing...
+1448736.2336910914: C2O: Destroying VM #0
+1448736.2336910914: C2O: Destroying VM #1
+1448736.2336910914: C2O: Destroying VM #2
+1448736.2336910914: C2O: Destroying VM #3
+1448736.2336910914: C2O: Destroying VM #4
+1448736.2336910914: C2O: Destroying VM #5
+1448736.2336910914: C2O: Destroying VM #6
+1448736.2336910914: C2O: Destroying VM #7
+1448736.2336910914: C2O: Destroying VM #8
+1448736.2336910914: C2O: Destroying VM #9
+C2O is shutting down...
+1461288.9883577581: C2O: VM # 0 completed Task # 15 "  "
+1461288.9883577581: C2O: All Tasks executed. Finishing...
+1461288.9883577581: C2O: Destroying VM #0
+1461288.9883577581: C2O: Destroying VM #1
+1461288.9883577581: C2O: Destroying VM #2
+1461288.9883577581: C2O: Destroying VM #3
+1461288.9883577581: C2O: Destroying VM #4
+1461288.9883577581: C2O: Destroying VM #5
+1461288.9883577581: C2O: Destroying VM #6
+1461288.9883577581: C2O: Destroying VM #7
+1461288.9883577581: C2O: Destroying VM #8
+1461288.9883577581: C2O: Destroying VM #9
+C2O is shutting down...
+1490423.7878501439: C2O: VM # 0 completed Task # 17 "  "
+1490423.7878501439: C2O: All Tasks executed. Finishing...
+1490423.7878501439: C2O: Destroying VM #0
+1490423.7878501439: C2O: Destroying VM #1
+1490423.7878501439: C2O: Destroying VM #2
+1490423.7878501439: C2O: Destroying VM #3
+1490423.7878501439: C2O: Destroying VM #4
+1490423.7878501439: C2O: Destroying VM #5
+1490423.7878501439: C2O: Destroying VM #6
+1490423.7878501439: C2O: Destroying VM #7
+1490423.7878501439: C2O: Destroying VM #8
+1490423.7878501439: C2O: Destroying VM #9
+C2O is shutting down...
+1567318.0592470397: C2O: VM # 0 completed Task # 18 "  "
+1567318.0592470397: C2O: All Tasks executed. Finishing...
+1567318.0592470397: C2O: Destroying VM #0
+1567318.0592470397: C2O: Destroying VM #1
+1567318.0592470397: C2O: Destroying VM #2
+1567318.0592470397: C2O: Destroying VM #3
+1567318.0592470397: C2O: Destroying VM #4
+1567318.0592470397: C2O: Destroying VM #5
+1567318.0592470397: C2O: Destroying VM #6
+1567318.0592470397: C2O: Destroying VM #7
+1567318.0592470397: C2O: Destroying VM #8
+1567318.0592470397: C2O: Destroying VM #9
+C2O is shutting down...
+Simulation: No more future events
+CloudInformationService: Notify all CloudSim entities for shutting down.
+Datacenter0 is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+C2O is shutting down...
+Simulation completed.
+Simulation completed.
+Run Time for user:0:15198.459588186615 & debt:22598.5
+Run Time for user:1:19901.75961823652 & debt:28808.5
+Run Time for user:2:14071.751137467314 & debt:19268.5
+Run Time for user:3:14970.66013054956 & debt:19808.5
+Run Time for user:4:17111.300117789044 & debt:22238.5
+Run Time for user:5:18087.811608914213 & debt:22868.5
+Run Time for user:6:17118.670465928302 & debt:20618.5
+Run Time for user:7:15277.704931162729 & debt:17018.5
+Run Time for user:8:20414.520249749978 & debt:23948.5
+Run Time for user:9:19405.60390583298 & debt:21608.5
+Run Time for user:10:23283.04708812883 & debt:26648.5
+Run Time for user:11:20438.683953473912 & debt:21518.5
+Run Time for user:12:17548.5339845638 & debt:16388.5
+Run Time for user:13:21890.755463935362 & debt:22058.5
+Run Time for user:14:20177.29634878379 & debt:18728.5
+Run Time for user:15:23454.816472629303 & debt:22778.5
+Run Time for user:16:23185.603894851523 & debt:21608.5
+Run Time for user:17:23820.396464169065 & debt:21788.5
+Run Time for user:18:25041.96765411733 & debt:22778.5
+Run Time for user:19:22442.80059142401 & debt:18098.5
+Total Workload: 20000000000mi 0io 0bw
+Total VM Performance: 245202mips 4102757iops 49488bwps
+minimum minutes (quotient): 1359 0 0

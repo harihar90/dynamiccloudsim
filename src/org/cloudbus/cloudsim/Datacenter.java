@@ -526,7 +526,7 @@ public class Datacenter extends SimEntity {
 		if(Parameters.charging==Parameters.Charging.COUNTERACT_GAMING)
 		debit += getCharacteristics().getCostPerSecond()*
 				(Math.ceil((CloudSim.clock() - vm.getStartTime())/Parameters.TIME_QUANTA) * Parameters.TIME_QUANTA) *
-				vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe()*((DynamicHost)(vmAllocationPolicy.getHost(vm))).getMipsPerPe()/((DynamicHost)(vmAllocationPolicy.getHost(vm))).getNumberOfCusPerPe()/Parameters.STANDARD_MIPS_PER_CU;
+				vm.getNumberOfPes()*((DynamicVm)vm).getNumberOfCusPerPe()*Math.pow((((DynamicHost)(vmAllocationPolicy.getHost(vm))).getMipsPerPe()/(((DynamicHost)(vmAllocationPolicy.getHost(vm))).getNumberOfCusPerPe()*Parameters.STANDARD_MIPS_PER_CU)),2);
 		else
 			debit += getCharacteristics().getCostPerSecond()*
 			(Math.ceil((CloudSim.clock() - vm.getStartTime())/Parameters.TIME_QUANTA) * Parameters.TIME_QUANTA) *

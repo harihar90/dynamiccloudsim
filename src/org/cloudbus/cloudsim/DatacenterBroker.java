@@ -21,6 +21,8 @@ import org.cloudbus.cloudsim.core.SimEvent;
 import org.cloudbus.cloudsim.lists.CloudletList;
 import org.cloudbus.cloudsim.lists.VmList;
 
+import de.huberlin.wbi.dcs.examples.Parameters;
+
 /**
  * DatacentreBroker represents a broker acting on behalf of a user. It hides VM management, as vm
  * creation, sumbission of cloudlets to this VMs and destruction of VMs.
@@ -30,7 +32,12 @@ import org.cloudbus.cloudsim.lists.VmList;
  * @since CloudSim Toolkit 1.0
  */
 public class DatacenterBroker extends SimEntity {
+	
+	// To delay the vm creation
+	private static int createVMsInDataCenterCallCount = 0;
 
+	//To decide if delay to be introduced
+	private static int numOfUsersCreated = 0;
 	/** The vm list. */
 	protected List<? extends Vm> vmList;
 
@@ -322,17 +329,23 @@ public class DatacenterBroker extends SimEntity {
 	 */
 	protected void createVmsInDatacenter(int datacenterId) {
 		// send as much vms as possible for this datacenter before trying the next one
+		
 		int requestedVms = 0;
 		String datacenterName = CloudSim.getEntityName(datacenterId);
 		for (Vm vm : getVmList()) {
 			if (!getVmsToDatacentersMap().containsKey(vm.getId())) {
 				Log.printLine(CloudSim.clock() + ": " + getName() + ": Trying to Create VM #" + vm.getId()
 						+ " in " + datacenterName);
-				sendNow(datacenterId, CloudSimTags.VM_CREATE_ACK, vm);
+				send(datacenterId, createVMsInDataCenterCallCount * Parameters.TIME_INTERVAL_USERS * Parameters.TIME_QUANTA,
+					CloudSimTags.VM_CREATE_ACK, vm);
+				
+				
 				requestedVms++;
 			}
 		}
-
+		numOfUsersCreated++;
+		if(numOfUsersCreated % Parameters.NUM_USERS_PER_DELAY == 0 )
+			createVMsInDataCenterCallCount++;
 		getDatacenterRequestedIdsList().add(datacenterId);
 
 		setVmsRequested(requestedVms);
@@ -657,6 +670,12 @@ public class DatacenterBroker extends SimEntity {
 	 */
 	protected void setDatacenterRequestedIdsList(List<Integer> datacenterRequestedIdsList) {
 		this.datacenterRequestedIdsList = datacenterRequestedIdsList;
+	}
+
+	public static void clearCount() {
+		createVMsInDataCenterCallCount=0;
+		numOfUsersCreated=0;
+		
 	}
 
 }

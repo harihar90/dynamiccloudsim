@@ -15,13 +15,17 @@ import org.cloudbus.cloudsim.distributions.ZipfDistr;
 
 import de.huberlin.wbi.dcs.distributions.NormalDistribution;
 
+
+
 public class Parameters {
 
-	public static final double DELTA = 100;
+	public static final double DELTA = 500;
 	public static final int TIME_QUANTA = 3600;
-	public static final int recheck_interval = 100;
+	public static final int recheck_interval = 500;
+	public static final int TIME_INTERVAL_USERS = 1; //with respect to TIME_QUANTA
+	public static final int NUM_USERS_PER_DELAY = 1; //after this many user delay introduced
 	public static long STANDARD_MIPS_PER_CU = 1210;
-
+    
 	public static boolean considerDataLocality = false;
 
 	// datacenter params
@@ -30,10 +34,15 @@ public class Parameters {
 	// Kb / s
 	public static long iopsPerPe = 20 * 1024;
 
+
+
 	public static int nAMD2218HE = 1000;
+
+
 	public static int nCusPerCoreAMD2218HE = 2;
 	public static int nCoresAMD2218HE = 2;
 	public static int mipsPerCoreAMD2218HE = 2600;
+
 
 	public static int nXeon5507 = 0;
 	public static int nCusPerCoreXeon5507 = 2;
@@ -51,6 +60,7 @@ public class Parameters {
 	public static int mipsPerCoreXeonE5645 = 2400;
 
 	// vm params
+
 	public static int nVms = 5;
 
 	public static int tVms = 10;// total number of vms created ( including those
@@ -78,7 +88,8 @@ public class Parameters {
 	}
 
 	public static Scheduler scheduler = Scheduler.C2O;
-	public static int numberOfRuns = 10;
+
+	public static int numberOfRuns = 50;
 
 	public enum Distribution {
 		EXPONENTIAL, GAMMA, LOGNORMAL, LOMAX, NORMAL, PARETO, UNIFORM, WEIBULL, ZIPF
@@ -86,7 +97,7 @@ public class Parameters {
 
 	// CPU Heterogeneity
 	public static Distribution cpuHeterogeneityDistribution = Distribution.NORMAL;
-	public static double cpuHeterogeneityCV = 0.039;
+	public static double cpuHeterogeneityCV = 0.195;
 	public static int cpuHeterogeneityAlpha = 0;
 	public static double cpuHeterogeneityBeta = 0d;
 	public static double cpuHeterogeneityShape = 0d;
@@ -331,12 +342,17 @@ public class Parameters {
 	}
 
 	public static Charging charging = Charging.NULL;
+
 	public static final int nUsers = 1;
+	
+
 	public static final long RECHECK_LIMIT = 10000;
+	public static final double OPPORTUNISTIC_THRESHOLD = 1;
 
 
+	static Gaming game=Gaming.OFF;
 
-	static Gaming game=Gaming.OPPORTUNISTIC;
+
 
 	
 
